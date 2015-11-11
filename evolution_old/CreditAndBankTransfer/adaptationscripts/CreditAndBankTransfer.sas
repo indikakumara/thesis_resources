@@ -1,0 +1,38 @@
+DEF:AddFeatureBankTransfer{
+   addRole rId="RoadsideBank" name="RoadsideBank";
+   addPlayerBinding pbId="RoadsideBank" rId="RoadsideBank" endpoint="http://localhost:8082/axis2/services/RoadsideBank";
+   addTaskDef rId="RoadsideBank" tId="PayRepair" usingMsgs="AccountingFirm-RoadsideBank.payRepairByBankTransfer.Req" resultingMsgs="AccountingFirm-RoadsideBank.payRepairByBankTransfer.Res" transFile="payBankReq.xsl";
+   addTaskDef rId="RoadsideBank" tId="PayTow" usingMsgs="AccountingFirm-RoadsideBank.payTowByBankTransfer.Req" resultingMsgs="AccountingFirm-RoadsideBank.payTowByBankTransfer.Res" transFile="payBankReq.xsl";
+   addTaskDef rId="RoadsideBank" tId="PayLegalAdvice" usingMsgs="AccountingFirm-RoadsideBank.payLegalAdviceByBankTransfer.Req" resultingMsgs="AccountingFirm-RoadsideBank.payLegalAdviceByBankTransfer.Res" transFile="payBankReq.xsl";
+   addTaskDef rId="RoadsideBank" tId="PayRentVehicle" usingMsgs="AccountingFirm-RoadsideBank.payRentVehicleByBankTransfer.Req" resultingMsgs="AccountingFirm-RoadsideBank.payRentVehicleByBankTransfer.Res" transFile="payBankReq.xsl";
+   setOutMsgOnTask rId="RoadsideBank" tId="PayRepair" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setInMsgOnTask rId="RoadsideBank" tId="PayRepair" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setOutMsgOnTask rId="RoadsideBank" tId="PayTow" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setInMsgOnTask rId="RoadsideBank" tId="PayTow" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setOutMsgOnTask rId="RoadsideBank" tId="PayLegalAdvice" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setInMsgOnTask rId="RoadsideBank" tId="PayLegalAdvice" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setOutMsgOnTask rId="RoadsideBank" tId="PayRentVehicle" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   setInMsgOnTask rId="RoadsideBank" tId="PayRentVehicle" deliveryType="push" returnType="String" parameters="String.amount,String.payer,String.payee" name="payByBankTransfer";
+   updateTaskDef rId="AccountingFirm" tId="BillRepair" property="resultingMsgs" value="AccountingFirm-RoadsideBank.payRepairByBankTransfer.Req.payRepairByBankTransferReq,GarageChain-AccountingFirm.billRepair.Res,AccountingFirm-CreditCardCompany.payRepairByCreditCard.Req.payRepairByCreditCardReq";
+   updateTaskDef rId="AccountingFirm" tId="BillTow" property="resultingMsgs" value="AccountingFirm-RoadsideBank.payTowByBankTransfer.Req.payTowByBankTransferReq,GarageChain-AccountingFirm.billTow.Res,AccountingFirm-CreditCardCompany.payTowByCreditCard.Req.payTowByCreditCardReq";
+   updateTaskDef rId="AccountingFirm" tId="BillRentVehicle" property="resultingMsgs" value="AccountingFirm-RoadsideBank.payRentVehicleByBankTransfer.Req.payRentVehicleByBankTransferReq,GarageChain-AccountingFirm.billRentVehicle.Res,AccountingFirm-CreditCardCompany.payRentVehicleByCreditCard.Req.payRentVehicleByCreditCardReq";
+   updateTaskDef rId="AccountingFirm" tId="BillLegalAdvice" property="resultingMsgs" value="AccountingFirm-RoadsideBank.payLegalAdviceByBankTransfer.Req.payLegalAdviceByBankTransferReq,GarageChain-AccountingFirm.billLegalAdvice.Res,AccountingFirm-CreditCardCompany.payLegalAdviceByCreditCard.Req.payLegalAdviceByCreditCardReq";
+   addContract cId="AccountingFirm-RoadsideBank" ruleFile="AccountingFirm-RoadsideBank.drl" type="permissive" state="Incipient" rAId="AccountingFirm" rBId="RoadsideBank";
+   addTerm  tmId="payRepairByBankTransfer" cId="AccountingFirm-RoadsideBank"  name="payRepairByBankTransfer" direction="AtoB" messageType="push";
+   addOperationToTerm tmId="payRepairByBankTransfer" cId="AccountingFirm-RoadsideBank" returnType="String" parameters="String.amount,String.payer,String.payee" name="payRepairByBankTransfer";
+   addTerm  tmId="payTowByBankTransfer" cId="AccountingFirm-RoadsideBank"  name="payTowByBankTransfer" direction="AtoB" messageType="push";
+   addOperationToTerm tmId="payTowByBankTransfer" cId="AccountingFirm-RoadsideBank" returnType="String" parameters="String.amount,String.payer,String.payee" name="payTowByBankTransfer";
+   addTerm  tmId="payLegalAdviceByBankTransfer" cId="AccountingFirm-RoadsideBank"  name="payLegalAdviceByBankTransfer" direction="AtoB" messageType="push";
+   addOperationToTerm tmId="payLegalAdviceByBankTransfer" cId="AccountingFirm-RoadsideBank" returnType="String" parameters="String.amount,String.payer,String.payee" name="payLegalAdviceBankTransfer";
+   addTerm  tmId="payRentVehicleByBankTransfer" cId="AccountingFirm-RoadsideBank"  name="payRentVehicleByBankTransfer" direction="AtoB" messageType="push";
+   addOperationToTerm tmId="payRentVehicleByBankTransfer" cId="AccountingFirm-RoadsideBank" returnType="String" parameters="String.amount,String.payer,String.payee" name="payRentVehicleByBankTransfer";
+   addBehavior bId="PayingByBankTransfer";
+   addTaskRef tId="RoadsideBank.PayTow" bId="PayingByBankTransfer" preEP="ePayTowReqd" postEP="ePaidTow";
+   addTaskRef tId="RoadsideBank.PayRepair" bId="PayingByBankTransfer" preEP="ePayRepairReqd" postEP="ePaidRepair";
+   addTaskRef tId="RoadsideBank.PayRentVehicle" bId="PayingByBankTransfer" preEP="ePayRentVehicleReqd" postEP="ePaidRentVehicle";
+   addTaskRef tId="RoadsideBank.PayLegalAdvice" bId="PayingByBankTransfer" preEP="ePayLegalAdviceReqd" postEP="ePaidLegalAdvice";
+   addBehaviorRefToProcessDef pdId="Tenant1" bId="PayingByBankTransfer";
+   addBehaviorRefToProcessDef pdId="Tenant2" bId="PayingByBankTransfer";
+   removeBehaviorRefFromProcessDef pdId="Tenant1" bId="PayingByCreditCard";
+   removeBehaviorRefFromProcessDef pdId="Tenant2" bId="PayingByCreditCard";
+}

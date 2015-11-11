@@ -1,0 +1,10 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+
+/** Permission Rules **/
+rule "sendGrLocation"
+    when
+		$msg : MessageRecievedEvent(operationName == "sendGRLocation", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eGRLocationKnown");
+end

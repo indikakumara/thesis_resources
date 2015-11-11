@@ -1,0 +1,17 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+
+rule "bill repair response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "billRepair", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBilledRepair");
+end
+
+rule "bill repair request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "billRepair", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBillRepairReqd");
+end

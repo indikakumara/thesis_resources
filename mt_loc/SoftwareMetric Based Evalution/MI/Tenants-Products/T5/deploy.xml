@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03"
+        xmlns:accountingfirm="http://ws.apache.org/axis2/accountingfirm"
+        xmlns:garagechain="http://ws.apache.org/axis2/garagechain"
+        xmlns:paymentservice="http://ws.apache.org/axis2/paymentservice"
+        xmlns:roadside-ode.org="http://roadside-ode.org"
+        xmlns:supportcentre="http://ws.apache.org/axis2/supportcentre"
+        xmlns:towchain="http://ws.apache.org/axis2/towchain">
+    <process name="roadside-ode.org:RoadsideProcess_MI_Tenant5">
+        <active>true</active>
+        <retired>false</retired>
+        <in-memory>true</in-memory>
+        <process-events generate="none"/>
+        <provide partnerLink="client">
+            <service name="roadside-ode.org:RoadsideProcess_MI_Tenant5" port="RoadsideProcessHttpSoap11Endpoint"/>
+        </provide>
+        <invoke partnerLink="accoutingfirm">
+            <service name="accountingfirm:RoadsideAccountingFirm" port="RoadsideAccountingFirmHttpSoap11Endpoint"/>
+        </invoke>
+        <invoke partnerLink="paymentService">
+            <service name="paymentservice:RoadsidePaymentService" port="RoadsidePaymentServiceHttpSoap11Endpoint"/>
+        </invoke>
+        <invoke partnerLink="supportCentre">
+            <service name="supportcentre:RoadsideCustomerSupportCentre"
+                     port="RoadsideCustomerSupportCentreHttpSoap11Endpoint"/>
+        </invoke>
+        <invoke partnerLink="garageChain">
+            <service name="garagechain:RoadsideGarageChain" port="RoadsideGarageChainHttpSoap11Endpoint"/>
+        </invoke>
+        <invoke partnerLink="towChain">
+            <service name="towchain:RoadsideTowChain" port="RoadsideTowChainHttpSoap11Endpoint"/>
+        </invoke>
+    </process>
+</deploy>

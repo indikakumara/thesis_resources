@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03"
+	xmlns:roadside-ode-tenant1.org="http://roadside-ode-tenant1.org"
+	xmlns:roadside-ode-tenant2.org="http://roadside-ode-tenant2.org"
+	xmlns:roadside-ode-tenant3.org="http://roadside-ode-tenant3.org"
+	xmlns:roadside-ode-tenant4.org="http://roadside-ode-tenant4.org"
+	xmlns:roadside-ode-tenant5.org="http://roadside-ode-tenant5.org"
+	xmlns:roadside-ode-tenant6.org="http://roadside-ode-tenant6.org"
+	xmlns:roadside-ode-tenant7.org="http://roadside-ode-tenant7.org"
+	xmlns:roadside-ode-tenant8.org="http://roadside-ode-tenant8.org"	
+	xmlns:roadside-ode-tenant9.org="http://roadside-ode-tenant9.org"
+	xmlns:roadside-ode-tenant10.org="http://roadside-ode-tenant10.org"	
+	xmlns:garagechain="http://ws.apache.org/axis2/garagechain"	
+	xmlns:roadside-ode.org="http://roadside-ode.org" xmlns:supportcentre="http://ws.apache.org/axis2/supportcentre"
+	xmlns:towchain="http://ws.apache.org/axis2/towchain">
+	<process name="roadside-ode.org:RoadsideProcessAnnotative">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="client">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</provide>
+		<invoke partnerLink="supportCentre">
+			<service name="supportcentre:RoadsideCustomerSupportCentre"
+				port="RoadsideCustomerSupportCentreHttpSoap11Endpoint" />
+		</invoke>
+		<invoke partnerLink="garageChain">
+			<service name="garagechain:RoadsideGarageChain" port="RoadsideGarageChainHttpSoap11Endpoint" />
+		</invoke>
+		<invoke partnerLink="towChain">
+			<service name="towchain:RoadsideTowChain" port="RoadsideTowChainHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant1.org:Roadside-Anno-T1">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant1.org:Roadside-Anno-T1"
+				port="Roadside-Anno-T1Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant2.org:Roadside-Anno-T2">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant2.org:Roadside-Anno-T2"
+				port="Roadside-Anno-T2Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant3.org:Roadside-Anno-T3">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant3.org:Roadside-Anno-T3"
+				port="Roadside-Anno-T3Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant4.org:Roadside-Anno-T4">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant4.org:Roadside-Anno-T4"
+				port="Roadside-Anno-T4Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant5.org:Roadside-Anno-T5">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant5.org:Roadside-Anno-T5"
+				port="Roadside-Anno-T5Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant6.org:Roadside-Anno-T6">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant6.org:Roadside-Anno-T6"
+				port="Roadside-Anno-T6Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant7.org:Roadside-Anno-T7">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant7.org:Roadside-Anno-T7"
+				port="Roadside-Anno-T7Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant8.org:Roadside-Anno-T8">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant8.org:Roadside-Anno-T8"
+				port="Roadside-Anno-T8Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant9.org:Roadside-Anno-T9">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant9.org:Roadside-Anno-T9"
+				port="Roadside-Anno-T9Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+	<process name="roadside-ode-tenant10.org:Roadside-Anno-T10">
+		<in-memory>true</in-memory>
+		<process-events generate="none" />
+		<provide partnerLink="tenantClient">
+			<service name="roadside-ode-tenant10.org:Roadside-Anno-T10"
+				port="Roadside-Anno-T10Port" />
+		</provide>
+		<invoke partnerLink="roadside-parent">
+			<service name="roadside-ode.org:RoadsideProcessAnnotative"
+				port="RoadsideProcessHttpSoap11Endpoint" />
+		</invoke>
+	</process>
+</deploy>

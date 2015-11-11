@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/accountingfirm" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/accountingfirm" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://ws.apache.org/axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/accountingfirm">
+    <wsdl:documentation>RoadsideAccountingFirm</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="TowBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RepairBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AccommodationBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RentCarBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MedicalTreatmentBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LegalAdviceBill">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/accountingfirm">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="billTow">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billTowResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:TowBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRepair">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRepairResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:RepairBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRentRoom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRentRoomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:AccommodationBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRentCar">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billRentCarResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:RentCarBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billMedicalTreatment">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billMedicalTreatmentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:MedicalTreatmentBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billLegalAdvice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="memberClass" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billLegalAdviceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:LegalAdviceBill"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="billRepairRequest">
+        <wsdl:part name="parameters" element="ns:billRepair"/>
+    </wsdl:message>
+    <wsdl:message name="billRepairResponse">
+        <wsdl:part name="parameters" element="ns:billRepairResponse"/>
+    </wsdl:message>
+    <wsdl:message name="billMedicalTreatmentRequest">
+        <wsdl:part name="parameters" element="ns:billMedicalTreatment"/>
+    </wsdl:message>
+    <wsdl:message name="billMedicalTreatmentResponse">
+        <wsdl:part name="parameters" element="ns:billMedicalTreatmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="billTowRequest">
+        <wsdl:part name="parameters" element="ns:billTow"/>
+    </wsdl:message>
+    <wsdl:message name="billTowResponse">
+        <wsdl:part name="parameters" element="ns:billTowResponse"/>
+    </wsdl:message>
+    <wsdl:message name="billRentRoomRequest">
+        <wsdl:part name="parameters" element="ns:billRentRoom"/>
+    </wsdl:message>
+    <wsdl:message name="billRentRoomResponse">
+        <wsdl:part name="parameters" element="ns:billRentRoomResponse"/>
+    </wsdl:message>
+    <wsdl:message name="billLegalAdviceRequest">
+        <wsdl:part name="parameters" element="ns:billLegalAdvice"/>
+    </wsdl:message>
+    <wsdl:message name="billLegalAdviceResponse">
+        <wsdl:part name="parameters" element="ns:billLegalAdviceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="billRentCarRequest">
+        <wsdl:part name="parameters" element="ns:billRentCar"/>
+    </wsdl:message>
+    <wsdl:message name="billRentCarResponse">
+        <wsdl:part name="parameters" element="ns:billRentCarResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideAccountingFirmPortType">
+        <wsdl:operation name="billRepair">
+            <wsdl:input message="tns:billRepairRequest" wsaw:Action="urn:billRepair"/>
+            <wsdl:output message="tns:billRepairResponse" wsaw:Action="urn:billRepairResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="billMedicalTreatment">
+            <wsdl:input message="tns:billMedicalTreatmentRequest" wsaw:Action="urn:billMedicalTreatment"/>
+            <wsdl:output message="tns:billMedicalTreatmentResponse" wsaw:Action="urn:billMedicalTreatmentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="billTow">
+            <wsdl:input message="tns:billTowRequest" wsaw:Action="urn:billTow"/>
+            <wsdl:output message="tns:billTowResponse" wsaw:Action="urn:billTowResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="billRentRoom">
+            <wsdl:input message="tns:billRentRoomRequest" wsaw:Action="urn:billRentRoom"/>
+            <wsdl:output message="tns:billRentRoomResponse" wsaw:Action="urn:billRentRoomResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="billLegalAdvice">
+            <wsdl:input message="tns:billLegalAdviceRequest" wsaw:Action="urn:billLegalAdvice"/>
+            <wsdl:output message="tns:billLegalAdviceResponse" wsaw:Action="urn:billLegalAdviceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="billRentCar">
+            <wsdl:input message="tns:billRentCarRequest" wsaw:Action="urn:billRentCar"/>
+            <wsdl:output message="tns:billRentCarResponse" wsaw:Action="urn:billRentCarResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideAccountingFirmSoap11Binding" type="tns:RoadsideAccountingFirmPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="billRepair">
+            <soap:operation soapAction="urn:billRepair" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billMedicalTreatment">
+            <soap:operation soapAction="urn:billMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billTow">
+            <soap:operation soapAction="urn:billTow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentRoom">
+            <soap:operation soapAction="urn:billRentRoom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billLegalAdvice">
+            <soap:operation soapAction="urn:billLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentCar">
+            <soap:operation soapAction="urn:billRentCar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideAccountingFirmSoap12Binding" type="tns:RoadsideAccountingFirmPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="billRepair">
+            <soap12:operation soapAction="urn:billRepair" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billMedicalTreatment">
+            <soap12:operation soapAction="urn:billMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billTow">
+            <soap12:operation soapAction="urn:billTow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentRoom">
+            <soap12:operation soapAction="urn:billRentRoom" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billLegalAdvice">
+            <soap12:operation soapAction="urn:billLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentCar">
+            <soap12:operation soapAction="urn:billRentCar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideAccountingFirmHttpBinding" type="tns:RoadsideAccountingFirmPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="billRepair">
+            <http:operation location="billRepair"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billMedicalTreatment">
+            <http:operation location="billMedicalTreatment"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billTow">
+            <http:operation location="billTow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentRoom">
+            <http:operation location="billRentRoom"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billLegalAdvice">
+            <http:operation location="billLegalAdvice"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="billRentCar">
+            <http:operation location="billRentCar"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideAccountingFirm">
+        <wsdl:port name="RoadsideAccountingFirmHttpSoap11Endpoint" binding="tns:RoadsideAccountingFirmSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/RoadsideAccountingFirm.RoadsideAccountingFirmHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideAccountingFirmHttpSoap12Endpoint" binding="tns:RoadsideAccountingFirmSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/RoadsideAccountingFirm.RoadsideAccountingFirmHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideAccountingFirmHttpEndpoint" binding="tns:RoadsideAccountingFirmHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/RoadsideAccountingFirm.RoadsideAccountingFirmHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

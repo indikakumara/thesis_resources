@@ -1,0 +1,32 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "submitRepairOnGarageOrder request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnGarageOrder", response ==false)
+    then
+        $msg.setBlocked(false);
+        $msg.triggerEvent("eAssistReqd");
+end
+
+rule "submitRepairOnGarageOrder response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnGarageOrder", response ==true)
+    then
+        $msg.setBlocked(false);
+    	$msg.triggerEvent("eAssistStarted");
+end
+
+rule "submitRepairOnSiteOrder request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnSiteOrder", response ==false)
+    then
+        $msg.setBlocked(false);
+        $msg.triggerEvent("eAssistReqd");
+end
+
+rule "submitRepairOnsiteOrder response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnSiteOrder", response ==true)
+    then
+        $msg.setBlocked(false);
+    	$msg.triggerEvent("eAssistStarted");
+end

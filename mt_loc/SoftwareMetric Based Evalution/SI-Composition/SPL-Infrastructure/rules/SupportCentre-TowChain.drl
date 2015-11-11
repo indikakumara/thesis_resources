@@ -1,0 +1,15 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "tow response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "orderTow", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eTowSuccess");
+end
+rule "tow request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "orderTow", response ==false)
+    then
+        $msg.setBlocked(false);
+		$msg.triggerEvent("eTowReqd");
+end

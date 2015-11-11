@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns="http://ws.apache.org/axis2/xsd/lawfirm"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/lawfirm"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://ws.apache.org/axis2/lawfirm">
+    <wsdl:documentation>RoadsideLawFirm</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://ws.apache.org/axis2/xsd/lawfirm">
+            <xs:element name="provideLegalAdvice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="provideLegalAdviceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="provideLegalAdviceRequest">
+        <wsdl:part name="parameters" element="ns:provideLegalAdvice"/>
+    </wsdl:message>
+    <wsdl:message name="provideLegalAdviceResponse">
+        <wsdl:part name="parameters" element="ns:provideLegalAdviceResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideLawFirmPortType">
+        <wsdl:operation name="provideLegalAdvice">
+            <wsdl:input message="tns:provideLegalAdviceRequest" wsaw:Action="urn:provideLegalAdvice"/>
+            <wsdl:output message="tns:provideLegalAdviceResponse" wsaw:Action="urn:provideLegalAdviceResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideLawFirmSoap11Binding" type="tns:RoadsideLawFirmPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="provideLegalAdvice">
+            <soap:operation soapAction="urn:provideLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideLawFirmSoap12Binding" type="tns:RoadsideLawFirmPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="provideLegalAdvice">
+            <soap12:operation soapAction="urn:provideLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideLawFirmHttpBinding" type="tns:RoadsideLawFirmPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="provideLegalAdvice">
+            <http:operation location="provideLegalAdvice"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideLawFirm">
+        <wsdl:port name="RoadsideLawFirmHttpSoap11Endpoint" binding="tns:RoadsideLawFirmSoap11Binding">
+            <soap:address
+                    location="http://localhost:8082/axis2/services/RoadsideLawFirm.RoadsideLawFirmHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideLawFirmHttpSoap12Endpoint" binding="tns:RoadsideLawFirmSoap12Binding">
+            <soap12:address
+                    location="http://localhost:8082/axis2/services/RoadsideLawFirm.RoadsideLawFirmHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideLawFirmHttpEndpoint" binding="tns:RoadsideLawFirmHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/RoadsideLawFirm.RoadsideLawFirmHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

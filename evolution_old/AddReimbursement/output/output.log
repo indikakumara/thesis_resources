@@ -1,0 +1,66 @@
+2013-03-12 17:19:48,890 73 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@1ca4955
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@1949a87
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@12d34a6
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@dbb335
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@1d281f1
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@1511e28
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@92d6d2
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@557d7e
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@a1e7ad
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@1711970
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefContractAddAction@3d1102
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@127a6bc
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@33aa44
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@1ef577d
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@58d6b0
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@76ec2d
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@18ba593
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorAddAction@1235feb
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@16e588e
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@177e5d4
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@91fa78
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefUpdateProcessDef@1d2f117
+2013-03-12 17:19:48,890 75 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@1d22104
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : NotifyReimbursementCompletion
+2013-03-12 17:19:48,890 1328 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : NotifyReimbursementCompletion
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : NotifyReimbursementCompletion
+2013-03-12 17:19:48,890 1328 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : NotifyReimbursementCompletion
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : ValidateReimbursementBills
+2013-03-12 17:19:48,890 1328 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : ValidateReimbursementBills
+2013-03-12 17:19:48,890 1368 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : ValidateReimbursementBills
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : PayBillsByCreditCard
+2013-03-12 17:19:48,890 1328 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : PayBillsByCreditCard
+2013-03-12 17:19:48,890 1368 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:19:48,890 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : PayBillsByCreditCard
+2013-03-12 17:19:48,890 1234 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewContract, contractId: Member-AccountingFirm
+2013-03-12 17:19:48,890 61 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.rules.drools.DroolsContractRulesImpl  - Reading KB from sample/AddReimbursement/data/\rules\Member-AccountingFirm.drl
+2013-03-12 17:19:48,906 836 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Adding contract Member-AccountingFirm to composite RootSMC
+2013-03-12 17:19:48,906 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Contract Member-AccountingFirm was successfully added
+2013-03-12 17:19:48,906 1269 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: Member-AccountingFirm
+2013-03-12 17:19:48,906 890 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'reimburse' has been added to the contract with the id 'Member-AccountingFirm'
+2013-03-12 17:19:48,906 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term reimburse was successfully added
+2013-03-12 17:19:48,906 1314 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:19:48,921 1269 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: Member-Tenant3
+2013-03-12 17:19:48,921 890 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'reimburse' has been added to the contract with the id 'Member-Tenant3'
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term reimburse was successfully added
+2013-03-12 17:19:48,921 1314 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:19:48,921 1269 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: AccountingFirm-CreditCardCompany
+2013-03-12 17:19:48,921 890 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'payBillsByCreditCard' has been added to the contract with the id 'AccountingFirm-CreditCardCompany'
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term payBillsByCreditCard was successfully added
+2013-03-12 17:19:48,921 1314 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - BehaviorUnit Reimbursing has been added
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  AccountingFirm.ValidateReimbursementBills added to Reimbursing
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  CreditCardCompany.PayBillsByCreditCard added to Reimbursing
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  Member.NotifyReimbursementCompletion added to Reimbursing
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Update property CoT of ProcessDefinitionTenant3 is done
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  Reimbursing has been added to Process Def Tenant3
+2013-03-12 17:19:48,921 15 [http-apr-8080-exec-5] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

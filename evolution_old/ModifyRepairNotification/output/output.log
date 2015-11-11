@@ -1,0 +1,21 @@
+
+2013-03-12 17:49:55,109 73 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@68097d
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@47034b
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@f5e814
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefContractAddAction@5789f3
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@121ea24
+2013-03-12 17:49:55,109 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@192e317
+2013-03-12 17:49:55,109 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : AckRepairing of the role :SupportCentre
+2013-03-12 17:49:55,109 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : OrderRepair of the role :GarageChain
+2013-03-12 17:49:55,109 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : NotifyCompletion of the role :Member
+2013-03-12 17:49:55,109 1234 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewContract, contractId: GarageChain-Member
+2013-03-12 17:49:55,109 61 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.rules.drools.DroolsContractRulesImpl  - Reading KB from sample/ModifyRepairNotification/data/\rules\GarageChain-Member.drl
+2013-03-12 17:49:55,125 836 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Adding contract GarageChain-Member to composite RootSMC
+2013-03-12 17:49:55,125 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Contract GarageChain-Member was successfully added
+2013-03-12 17:49:55,125 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: GarageChain-Member
+2013-03-12 17:49:55,125 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'notifyCompletion' has been added to the contract with the id 'GarageChain-Member'
+2013-03-12 17:49:55,125 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term notifyCompletion was successfully added
+2013-03-12 17:49:55,125 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:49:55,140 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:49:55,140 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns="http://ws.apache.org/axis2/xsd/medicare"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/medicare"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://ws.apache.org/axis2/medicare">
+    <wsdl:documentation>RoadsideMedicare</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://ws.apache.org/axis2/xsd/medicare">
+            <xs:element name="provideMedicalTreatment">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="provideMedicalTreatmentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="provideMedicalTreatmentRequest">
+        <wsdl:part name="parameters" element="ns:provideMedicalTreatment"/>
+    </wsdl:message>
+    <wsdl:message name="provideMedicalTreatmentResponse">
+        <wsdl:part name="parameters" element="ns:provideMedicalTreatmentResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideMedicarePortType">
+        <wsdl:operation name="provideMedicalTreatment">
+            <wsdl:input message="tns:provideMedicalTreatmentRequest" wsaw:Action="urn:provideMedicalTreatment"/>
+            <wsdl:output message="tns:provideMedicalTreatmentResponse"
+                         wsaw:Action="urn:provideMedicalTreatmentResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideMedicareSoap11Binding" type="tns:RoadsideMedicarePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="provideMedicalTreatment">
+            <soap:operation soapAction="urn:provideMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideMedicareSoap12Binding" type="tns:RoadsideMedicarePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="provideMedicalTreatment">
+            <soap12:operation soapAction="urn:provideMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideMedicareHttpBinding" type="tns:RoadsideMedicarePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="provideMedicalTreatment">
+            <http:operation location="provideMedicalTreatment"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideMedicare">
+        <wsdl:port name="RoadsideMedicareHttpSoap11Endpoint" binding="tns:RoadsideMedicareSoap11Binding">
+            <soap:address
+                    location="http://localhost:8082/axis2/services/RoadsideMedicare.RoadsideMedicareHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideMedicareHttpSoap12Endpoint" binding="tns:RoadsideMedicareSoap12Binding">
+            <soap12:address
+                    location="http://localhost:8082/axis2/services/RoadsideMedicare.RoadsideMedicareHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideMedicareHttpEndpoint" binding="tns:RoadsideMedicareHttpBinding">
+            <http:address
+                    location="http://localhost:8082/axis2/services/RoadsideMedicare.RoadsideMedicareHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/supportcentre" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/supportcentre" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://ws.apache.org/axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/supportcentre">
+    <wsdl:documentation>RoadsideCustomerSupportCentre</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="AnalyseResponseForOnSite">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contactNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AnalyseResponseForOnGarage">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contactNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="towing" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax24="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/supportcentre">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="analyseRepairOnSiteOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membershipID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="analyseRepairOnSiteOrderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:AnalyseResponseForOnSite"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="analyseRepairOnGarageOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membershipID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="analyseRepairOnGarageOrderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:AnalyseResponseForOnGarage"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="analyseRepairOnSiteOrderRequest">
+        <wsdl:part name="parameters" element="ns:analyseRepairOnSiteOrder"/>
+    </wsdl:message>
+    <wsdl:message name="analyseRepairOnSiteOrderResponse">
+        <wsdl:part name="parameters" element="ns:analyseRepairOnSiteOrderResponse"/>
+    </wsdl:message>
+    <wsdl:message name="analyseRepairOnGarageOrderRequest">
+        <wsdl:part name="parameters" element="ns:analyseRepairOnGarageOrder"/>
+    </wsdl:message>
+    <wsdl:message name="analyseRepairOnGarageOrderResponse">
+        <wsdl:part name="parameters" element="ns:analyseRepairOnGarageOrderResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideCustomerSupportCentrePortType">
+        <wsdl:operation name="analyseRepairOnSiteOrder">
+            <wsdl:input message="tns:analyseRepairOnSiteOrderRequest" wsaw:Action="urn:analyseRepairOnSiteOrder"/>
+            <wsdl:output message="tns:analyseRepairOnSiteOrderResponse" wsaw:Action="urn:analyseRepairOnSiteOrderResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="analyseRepairOnGarageOrder">
+            <wsdl:input message="tns:analyseRepairOnGarageOrderRequest" wsaw:Action="urn:analyseRepairOnGarageOrder"/>
+            <wsdl:output message="tns:analyseRepairOnGarageOrderResponse" wsaw:Action="urn:analyseRepairOnGarageOrderResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideCustomerSupportCentreSoap11Binding" type="tns:RoadsideCustomerSupportCentrePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="analyseRepairOnSiteOrder">
+            <soap:operation soapAction="urn:analyseRepairOnSiteOrder" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyseRepairOnGarageOrder">
+            <soap:operation soapAction="urn:analyseRepairOnGarageOrder" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideCustomerSupportCentreSoap12Binding" type="tns:RoadsideCustomerSupportCentrePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="analyseRepairOnSiteOrder">
+            <soap12:operation soapAction="urn:analyseRepairOnSiteOrder" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyseRepairOnGarageOrder">
+            <soap12:operation soapAction="urn:analyseRepairOnGarageOrder" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideCustomerSupportCentreHttpBinding" type="tns:RoadsideCustomerSupportCentrePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="analyseRepairOnSiteOrder">
+            <http:operation location="analyseRepairOnSiteOrder"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyseRepairOnGarageOrder">
+            <http:operation location="analyseRepairOnGarageOrder"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideCustomerSupportCentre">
+        <wsdl:port name="RoadsideCustomerSupportCentreHttpSoap11Endpoint" binding="tns:RoadsideCustomerSupportCentreSoap11Binding">
+            <soap:address location="http://172.16.33.134:8082/axis2/services/RoadsideCustomerSupportCentre.RoadsideCustomerSupportCentreHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideCustomerSupportCentreHttpSoap12Endpoint" binding="tns:RoadsideCustomerSupportCentreSoap12Binding">
+            <soap12:address location="http://172.16.33.134:8082/axis2/services/RoadsideCustomerSupportCentre.RoadsideCustomerSupportCentreHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideCustomerSupportCentreHttpEndpoint" binding="tns:RoadsideCustomerSupportCentreHttpBinding">
+            <http:address location="http://172.16.33.134:8082/axis2/services/RoadsideCustomerSupportCentre.RoadsideCustomerSupportCentreHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

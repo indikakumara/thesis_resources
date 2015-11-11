@@ -1,0 +1,39 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+import au.edu.swin.ict.road.composite.message.MessageWrapper;
+import au.edu.swin.ict.road.composite.message.MessageClassifier;
+rule "submitRepairOnSiteOrder request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnSiteOrder", response ==false)
+    then
+      $msg.setBlocked(false);
+      MessageWrapper mw = $msg.getMessageWrapper();
+      String roleID = mw.getOriginRoleId();
+      MessageClassifier classifier = new MessageClassifier();
+      classifier.setClassifier(roleID);
+      mw.setMessageClassifier(classifier);
+      $msg.triggerEvent("e"+roleID+"Reqd");
+end
+rule "submitRepairOnsiteOrder response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnSiteOrder", response ==true)
+    then
+        $msg.setBlocked(false);
+end
+rule "submitRepairOnGarageOrder request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnGarageOrder", response ==false)
+    then
+      $msg.setBlocked(false);
+      MessageWrapper mw = $msg.getMessageWrapper();
+      String roleID = mw.getOriginRoleId();
+      MessageClassifier classifier = new MessageClassifier();
+      classifier.setClassifier(roleID);
+      mw.setMessageClassifier(classifier);
+      $msg.triggerEvent("e"+roleID+"Reqd");
+end
+rule "submitRepairOnGarageOrder response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "submitRepairOnGarageOrder", response ==true)
+    then
+        $msg.setBlocked(false);
+end

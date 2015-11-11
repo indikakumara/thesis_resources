@@ -1,0 +1,16 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "bill Room response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "billRentRoom", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBilledRentRoom");
+end
+
+rule "bill Room request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "billRentRoom", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBillRentRoomReqd");
+end

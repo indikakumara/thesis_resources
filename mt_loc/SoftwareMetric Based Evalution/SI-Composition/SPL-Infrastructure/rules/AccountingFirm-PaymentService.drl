@@ -1,0 +1,85 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "orderpayRepair response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRepair", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRepairPaymentSuccess");
+end
+rule "payRepair request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRepair", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayRepairReqd");
+end
+rule "payTow response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payTow", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eTowPaymentSuccess");
+end
+rule "payTow request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payTow", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayTowReqd");
+end
+rule "payRentCar response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRentCar", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRentCarPaymentSuccess");
+end
+rule "payRentCar request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRentCar", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayRentCarReqd");
+end
+rule "roomPay response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRentRoom", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRentRoomPaymentSuccess");
+end
+rule "roomPay request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payRentRoom", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayRoomReqd");
+end
+rule "medicalTreatmentPay response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payMedicalTreatment", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eMedicalTreatmentPaymentSuccess");
+end
+rule "medicalTreatmentPay request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payMedicalTreatment", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayMedicalTreatmentReqd");
+end
+rule "payLegalAdvice response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "payLegalAdvice", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eLegalAdvicePaymentSuccess");
+end
+rule "payLegalAdvice request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "payLegalAdvice", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("ePayLegalAdviceReqd");
+end

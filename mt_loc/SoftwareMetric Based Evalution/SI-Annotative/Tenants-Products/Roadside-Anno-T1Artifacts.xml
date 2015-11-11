@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://roadside-ode-tenant1.org"
+                  name="Roadside-Anno-T1"
+                  targetNamespace="http://roadside-ode-tenant1.org" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:roadsideparent="http://roadside-ode.org">
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         TYPE DEFINITION - List of types participating in this BPEL process The BPEL
+         Designer will generate default request and response types but you can define
+         or import any XML Schema type and use them as part of the message types.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <plnk:partnerLinkType name="tenantClientPLType">
+        <plnk:role name="tenantClient" portType="tns:Roadside-Anno-T1"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="roadside-parentPLType">
+        <plnk:role name="roadside-parent" portType="roadsideparent:RoadsideProcessPortType"/>
+    </plnk:partnerLinkType>
+    <wsdl:import location="RoadsideProcessArtifacts.wsdl" namespace="http://roadside-ode.org"/>
+    <wsdl:types>
+        <xs:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                   attributeFormDefault="unqualified" elementFormDefault="qualified"
+                   targetNamespace="http://roadside-ode-tenant1.org">
+
+            <xs:element name="Roadside-Anno-T1Request">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membershipID" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="location" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="message" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="vehicleType" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="garagePreference"
+                                    nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="serviceLocation"
+                                    nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="Roadside-Anno-T1Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true"
+                                    type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         MESSAGE TYPE DEFINITION - Definition of the message types used as part of
+         the port type defintions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <wsdl:message name="Roadside-Anno-T1RequestMessage">
+        <wsdl:part element="tns:Roadside-Anno-T1Request" name="payload"/>
+    </wsdl:message>
+    <wsdl:message name="Roadside-Anno-T1ResponseMessage">
+        <wsdl:part element="tns:Roadside-Anno-T1Response" name="payload"/>
+    </wsdl:message>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         PORT TYPE DEFINITION - A port type groups a set of operations into a logical
+         service unit. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!-- portType implemented by the Roadside-Anno-T1 BPEL process -->
+    <wsdl:portType name="Roadside-Anno-T1">
+        <wsdl:operation name="roadsideAssistance">
+            <wsdl:input message="tns:Roadside-Anno-T1RequestMessage"/>
+            <wsdl:output message="tns:Roadside-Anno-T1ResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         BINDING DEFINITION - Defines the message format and protocol details for
+         a web service. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <wsdl:binding name="Roadside-Anno-T1Binding" type="tns:Roadside-Anno-T1">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="roadsideAssistance">
+            <soap:operation soapAction="http://roadside-ode-tenant1.org/process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         SERVICE DEFINITION - A service groups a set of ports into a service unit.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <wsdl:service name="Roadside-Anno-T1">
+        <wsdl:port binding="tns:Roadside-Anno-T1Binding" name="Roadside-Anno-T1Port">
+            <soap:address location="http://localhost:8080/ode/processes/Roadside-Anno-T1"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

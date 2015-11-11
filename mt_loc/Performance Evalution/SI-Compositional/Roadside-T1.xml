@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jaxfront version=2.66;time=2011-06-27 17:36:31.846;xui=road1.xui;xsd=smc.xsd?>
+<tns:SMC xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:tns6="http://www.swin.edu.au/ict/road/player"
+         xmlns:tns5="http://www.swin.edu.au/ict/road/monitor"
+         xmlns:tns4="http://www.swin.edu.au/ict/road/term" xsi:schemaLocation="smc smc.xsd"
+         xmlns:tns3="http://www.swin.edu.au/ict/road/contract"
+         xmlns:tns2="http://www.swin.edu.au/ict/road/role"
+         xmlns:tns1="http://www.ict.swin.edu.au/serendip/types"
+         xmlns:tns="http://www.swin.edu.au/ict/road/smc"
+         name="ROADSide4rolesT1" dataDir="sample/10rolesv2/data/" routingRuleFile="routing.drl"
+         compositeRuleFile="composite.drl">
+
+    <!-- Given below are a bunch of process definitions -->
+    <ProcessDefinitions>
+        <tns1:ProcessDefinition id="Tenant1">
+            <tns1:CoS>eTenant1Reqd</tns1:CoS>
+            <tns1:CoT>eorderTowResd * esubmitRepairOnGarageOrderResd * erepairOnGarageResd</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>LightRepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LightVehicleTowing</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([[esendGRLocationReqd] >0)->([eorderTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eorderTowResd]>0)->[0,6h]([[esendGRLocationReqd]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+    </ProcessDefinitions>
+
+    <BehaviorTerms>
+
+        <tns1:BehaviorTerm id="Repair" isAbstract="true">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+
+        <tns1:BehaviorTerm id="RepairOnGarage" extends="Repair" isAbstract="true">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="SupportCentre.AnalyseRepairOnGarageOrder"
+                              preEP="esubmitRepairOnGarageOrderReqd"
+                              postEP="erepairOnGarageReq * eorderTowReqd"/>
+                <tns1:TaskRef Id="GarageChain.RepairOnGarage"
+                              preEP="erepairOnGarageReqd"
+                              postEP="erepairOnGarageResd * esendGRLocationReqd"/>
+                <tns1:TaskRef Id="Member.SubmitRepairOnGarageOrder"
+                              preEP="eorderTowResd * esubmitRepairOnGarageOrderResd * erepairOnGarageResd"
+                              postEP=""/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+
+        <tns1:BehaviorTerm id="LightRepairOnGarage" extends="RepairOnGarage">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+
+        <tns1:BehaviorTerm id="Towing" isAbstract="true">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="TowChain.Tow"
+                              preEP="esendGRLocationReqd * eorderTowReqd"
+                              postEP="eorderTowResd"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+
+        <tns1:BehaviorTerm id="LightVehicleTowing" extends="Towing">
+            <tns1:TaskRefs></tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eorderTowResd]>0)->[0,2d]([esendGRLocationReqd]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+    </BehaviorTerms>
+
+    <Roles>
+        <Role id="Tenant1" name="Tenant1">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant1"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+
+        <Role id="Member" name="Member">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="SupportCentre" name="SupportCentre">
+            <Tasks>
+                <tns1:Task id="AnalyseRepairOnGarageOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="analyseRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="analyseRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="analyseRepairOnGarageOrderReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="repairOnGarage" isResponse="false"
+                                        transformation="repairOnGarageReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-TowChain"
+                                        termId="orderTow" isResponse="false"/>
+                        <tns1:ResultMsg contractId="SupportCentre-Member"
+                                        transformation="analyseRepairOnGarageOrderRes.xsl"
+                                        termId="submitRepairOnGarageOrder"
+                                        isResponse="true"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role SupportCentre</Description>
+        </Role>
+
+        <Role id="GarageChain" name="GarageChain">
+            <Tasks>
+                <tns1:Task id="repairOnGarage" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="repairOnGarage">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>RepairResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="repairOnGarage">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>RepairResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="SupportCentre-GarageChain"
+                                     termId="repairOnGarage"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="GarageChain-TowChain"
+                                        termId="sendGRLocation" isResponse="false"/>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="repairOnGarage" isResponse="true"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role GarageChain</Description>
+        </Role>
+
+        <Role id="TowChain" name="TowChain">
+            <Tasks>
+                <tns1:Task id="Tow" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="tow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="Tow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="towReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-TowChain" termId="orderTow"
+                                     isResponse="false"/>
+                        <tns1:SrcMsg contractId="GarageChain-TowChain" termId="sendGRLocation"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-TowChain"
+                                        termId="orderTow" isResponse="true"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role TowChain</Description>
+        </Role>
+    </Roles>
+    <Contracts>
+        <Contract id="SupportCentre-GarageChain" type="permissive"
+                  ruleFile="SupportCentre-GarageChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="repairOnGarage" name="repairOnGarage-term">
+                    <Operation name="repairOnGarage">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>contactNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>RepairResponseForOnGarage</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for repairOnGarage</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>GarageChain</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and GarageChain
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-TowChain" type="permissive"
+                  ruleFile="SupportCentre-TowChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderTow" name="orderTow-term">
+                    <Operation name="orderTow">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>contactNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for towBus</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>TowChain</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and TowChain
+            </Description>
+        </Contract>
+        <Contract id="GarageChain-TowChain" type="permissive"
+                  ruleFile="GarageChain-TowChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="sendGRLocation" name="term to send the garage location">
+                    <Operation name="sendGRLocation">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>addressOfGR</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>GarageChain</RoleAID>
+            <RoleBID>TowChain</RoleBID>
+            <Description>This is the contract btwn the GarageChain and TowChain
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-Member" type="permissive" ruleFile="SupportCentre-Member.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>Member</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Member
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant1" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant1</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant1
+            </Description>
+        </Contract>
+    </Contracts>
+    <PlayerBindings>
+        <PlayerBinding id="SupportCentre">
+            <Endpoint>http://172.16.33.134:8082/axis2/services/RoadsideCustomerSupportCentre</Endpoint>
+            <Roles>
+                <RoleID>SupportCentre</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="GarageChain">
+            <Endpoint>http://172.16.33.134:8082/axis2/services/RoadsideGarageChain</Endpoint>
+            <Roles>
+                <RoleID>GarageChain</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="TowChain">
+            <Endpoint>http://172.16.33.134:8082/axis2/services/RoadsideTowChain</Endpoint>
+            <Roles>
+                <RoleID>TowChain</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+    </PlayerBindings>
+    <OrganiserBinding>OrganiserBinding</OrganiserBinding>
+    <Description>Description</Description>
+</tns:SMC>

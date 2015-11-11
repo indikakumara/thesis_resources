@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- RoadsideProcess BPEL Process [Generated 
+	by the Eclipse BPEL Designer] -->
+<!-- Date: Fri Oct 05 10:01:45 EST 2012 -->
+<bpel:process name="RoadsideProcess_MI_Tenant3" targetNamespace="http://roadside-ode.org"
+              suppressJoinFailure="yes" xmlns:tns="http://roadside-ode.org"
+              xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+              xmlns:ns="http://ws.apache.org/axis2/supportcentre"
+              xmlns:ns0="http://ws.apache.org/axis2/garagechain" xmlns:ns6="http://ws.apache.org/axis2/towchain"
+              expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+              xmlns:ns14="http://www.w3.org/2001/XMLSchema">
+    <bpel:import namespace="http://ws.apache.org/axis2/towchain"
+                 location="RoadsideTowChain.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <bpel:import namespace="http://ws.apache.org/axis2/garagechain"
+                 location="RoadsideGarageChain.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <bpel:import namespace="http://ws.apache.org/axis2/supportcentre"
+                 location="RoadsideCustomerSupportCentre.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <bpel:import namespace="http://roadside-ode.org" location="RoadsideProcessArtifacts.wsdl"
+                 importType="http://schemas.xmlsoap.org/wsdl/"/>
+
+    <bpel:partnerLinks>
+        <bpel:partnerLink name="client" partnerLinkType="tns:clientPLType"
+                          myRole="client"/>
+        <bpel:partnerLink name="supportCentre"
+                          partnerLinkType="tns:supportCentrePLType"
+                          partnerRole="supportCentrePlayer"></bpel:partnerLink>
+        <bpel:partnerLink name="garageChain" partnerLinkType="tns:garageChainPLType"
+                          partnerRole="garageChainPlayer"></bpel:partnerLink>
+        <bpel:partnerLink name="towChain" partnerLinkType="tns:towChainPLType"
+                          partnerRole="towChainPlayer"></bpel:partnerLink>
+    </bpel:partnerLinks>
+    <!-- ================================================================= -->
+    <!-- ORCHESTRATION LOGIC -->
+    <!-- Set of activities coordinating the flow of messages across the -->
+    <!-- services integrated within this business process -->
+    <!-- =============================================================== -->
+    <bpel:variables>
+        <bpel:variable name="clientRequest" messageType="tns:submitRepairOnGarageOrderRequest"></bpel:variable>
+        <bpel:variable name="analyseOnGarageRequest" messageType="ns:analyseRepairOnGarageOrderRequest"></bpel:variable>
+        <bpel:variable name="analyseOnGarageResponse"
+                       messageType="ns:analyseRepairOnGarageOrderResponse"></bpel:variable>
+        <bpel:variable name="repairOnGarageRequest" messageType="ns0:repairOnGarageRequest"></bpel:variable>
+        <bpel:variable name="repairOnGarageResponse" messageType="ns0:repairOnGarageResponse"></bpel:variable>
+        <bpel:variable name="towRequest" messageType="ns6:towRequest"></bpel:variable>
+        <bpel:variable name="towResponse" messageType="ns6:towResponse"></bpel:variable>
+        <bpel:variable name="clientResponse"
+                       messageType="tns:submitRepairOnGarageOrderResponse"></bpel:variable>
+        <bpel:variable name="serviceType" type="ns14:string"></bpel:variable>
+    </bpel:variables>
+    <bpel:sequence name="main">
+        <bpel:receive name="ReceiveAssitanceRequest" createInstance="yes"
+                      partnerLink="client" operation="submitRepairOnGarageOrder" portType="tns:RoadsideProcessPortType"
+                      variable="clientRequest">
+        </bpel:receive>
+        <bpel:assign validate="yes" name="PrepareAnalyseOnGarage">
+            <bpel:copy>
+                <bpel:from>
+                    <![CDATA[bpel:doXslTransform("analyseRepairOnGarageOrderReq.xsl", $clientRequest.parameters)]]>
+                </bpel:from>
+                <bpel:to part="parameters" variable="analyseOnGarageRequest"></bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:invoke name="AnalyseOnGarage" partnerLink="supportCentre"
+                     operation="analyseRepairOnGarageOrder"
+                     portType="ns:RoadsideCustomerSupportCentrePortType"
+                     inputVariable="analyseOnGarageRequest" outputVariable="analyseOnGarageResponse"/>
+        <bpel:assign validate="no" name="OrderRepairOnGarageRequest">
+            <bpel:copy>
+                <bpel:from>
+                    <![CDATA[bpel:doXslTransform("repairOnGarageReq.xsl", $analyseOnGarageResponse.parameters)]]>
+                </bpel:from>
+                <bpel:to part="parameters" variable="repairOnGarageRequest"/>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:invoke name="OrderOnGarageRepair" partnerLink="garageChain"
+                     operation="repairOnGarage" portType="ns0:RoadsideGarageChainPortType"
+                     inputVariable="repairOnGarageRequest"
+                     outputVariable="repairOnGarageResponse"/>
+        <bpel:assign validate="no" name="TowRequest">
+            <bpel:copy>
+                <bpel:from>
+                    <![CDATA[bpel:doXslTransform("towReq.xsl", $repairOnGarageResponse.parameters)]]>
+                </bpel:from>
+                <bpel:to part="parameters" variable="towRequest"/>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:invoke name="DoTow" partnerLink="towChain" operation="tow"
+                     portType="ns6:RoadsideTowChainPortType" inputVariable="towRequest"
+                     outputVariable="towResponse"/>
+        <bpel:assign validate="no" name="ClientResponse">
+            <bpel:copy>
+                <bpel:from>
+                    <![CDATA[bpel:doXslTransform("analyseRepairOnGarageOrderRes.xsl", $towResponse.parameters)]]>
+                </bpel:from>
+                <bpel:to part="parameters" variable="clientResponse"></bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:reply name="replyOutput" partnerLink="client"
+                    operation="submitRepairOnGarageOrder" portType="tns:RoadsideProcessPortType"
+                    variable="clientResponse"/>
+    </bpel:sequence>
+</bpel:process>

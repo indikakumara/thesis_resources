@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- RoadsideProcess BPEL Process [Generated 
+	by the Eclipse BPEL Designer] -->
+<!-- Date: Fri Oct 05 10:01:45 EST 2012 -->
+<bpel:process name="RoadsideProcess_MI_Tenant3" targetNamespace="http://roadside-ode.org"
+              suppressJoinFailure="yes" xmlns:tns="http://roadside-ode.org"
+              xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+              xmlns:ns="http://ws.apache.org/axis2/supportcentre"
+              xmlns:ns0="http://ws.apache.org/axis2/garagechain"
+              xmlns:ns7="http://ws.apache.org/axis2/accountingfirm"
+              xmlns:ns8="http://ws.apache.org/axis2/paymentservice"
+              expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+              xmlns:ns13="http://ws.apache.org/axis2/lawfirm"
+              xmlns:ns14="http://www.w3.org/2001/XMLSchema">
+    <!-- Import the client WSDL -->
+    <bpel:import namespace="http://ws.apache.org/axis2/lawfirm"
+                 location="RoadsideLawFirm.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://ws.apache.org/axis2/paymentservice"
+                 location="RoadsidePaymentService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://ws.apache.org/axis2/accountingfirm"
+                 location="RoadsideAccountingFirm.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://ws.apache.org/axis2/garagechain"
+                 location="RoadsideGarageChain.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <bpel:import namespace="http://ws.apache.org/axis2/supportcentre"
+                 location="RoadsideCustomerSupportCentre.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <bpel:import namespace="http://roadside-ode.org" location="RoadsideProcessArtifacts.wsdl"
+                 importType="http://schemas.xmlsoap.org/wsdl/"/>
+
+    <bpel:partnerLinks>
+        <bpel:partnerLink name="client" partnerLinkType="tns:clientPLType"
+                          myRole="client"/>
+        <bpel:partnerLink name="accoutingfirm"
+                          partnerLinkType="tns:accountingPLType" partnerRole="billProvider"></bpel:partnerLink>
+        <bpel:partnerLink name="paymentService"
+                          partnerLinkType="tns:paymentServicePLType"
+                          partnerRole="paymentServicePlayer"></bpel:partnerLink>
+        <bpel:partnerLink name="supportCentre"
+                          partnerLinkType="tns:supportCentrePLType"
+                          partnerRole="supportCentrePlayer"></bpel:partnerLink>
+        <bpel:partnerLink name="garageChain" partnerLinkType="tns:garageChainPLType"
+                          partnerRole="garageChainPlayer"></bpel:partnerLink>
+
+
+        <bpel:partnerLink name="lawAgency" partnerLinkType="tns:lawAgencyPLtype"
+                          partnerRole="lowAgencyProvider"></bpel:partnerLink>
+    </bpel:partnerLinks>
+    <!-- ================================================================= -->
+    <!-- ORCHESTRATION LOGIC -->
+    <!-- Set of activities coordinating the flow of messages across the -->
+    <!-- services integrated within this business process -->
+    <!-- =============================================================== -->
+    <bpel:variables>
+        <bpel:variable name="clientRequest" messageType="tns:submitRepairOnGarageOrderRequest"></bpel:variable>
+        <bpel:variable name="analyseOnGarageRequest" messageType="ns:analyseRepairOnGarageOrderRequest"></bpel:variable>
+        <bpel:variable name="analyseOnGarageResponse"
+                       messageType="ns:analyseRepairOnGarageOrderResponse"></bpel:variable>
+
+
+        <bpel:variable name="billRepairRequest" messageType="ns7:billRepairRequest"></bpel:variable>
+        <bpel:variable name="billRepairResponse" messageType="ns7:billRepairResponse"></bpel:variable>
+        <bpel:variable name="payRepairRequest" messageType="ns8:payRepairRequest"></bpel:variable>
+        <bpel:variable name="payReapairResponse" messageType="ns8:payRepairResponse"></bpel:variable>
+
+
+        <bpel:variable name="legalAdviceRequest" messageType="ns13:provideLegalAdviceRequest"></bpel:variable>
+        <bpel:variable name="legalAdviceResponse" messageType="ns13:provideLegalAdviceResponse"></bpel:variable>
+        <bpel:variable name="billLegalAdviceRequest" messageType="ns7:billLegalAdviceRequest"></bpel:variable>
+        <bpel:variable name="billLegalAdviceResponse" messageType="ns7:billLegalAdviceResponse"></bpel:variable>
+        <bpel:variable name="payLegalAdviceRequest" messageType="ns8:payLegalAdviceRequest"></bpel:variable>
+        <bpel:variable name="payLegalAdviceResponse" messageType="ns8:payLegalAdviceResponse"></bpel:variable>
+
+
+        <bpel:variable name="clientResponse"
+                       messageType="tns:submitRepairOnGarageOrderResponse"></bpel:variable>
+        <bpel:variable name="repairOnSiteRequest" messageType="ns0:repairOnSiteRequest"></bpel:variable>
+        <bpel:variable name="repairOnSiteResponse" messageType="ns0:repairOnSiteResponse"></bpel:variable>
+        <bpel:variable name="analyseRepairOnSiteRequest"
+                       messageType="ns:analyseRepairOnSiteOrderRequest"></bpel:variable>
+        <bpel:variable name="analyseRepairOnSiteResponse"
+                       messageType="ns:analyseRepairOnSiteOrderResponse"></bpel:variable>
+
+        <bpel:variable name="serviceType" type="ns14:string"></bpel:variable>
+    </bpel:variables>
+    <bpel:sequence name="main">
+        <bpel:receive name="ReceiveAssitanceRequest" createInstance="yes"
+                      partnerLink="client" operation="submitRepairOnGarageOrder" portType="tns:RoadsideProcessPortType"
+                      variable="clientRequest">
+        </bpel:receive>
+
+        <bpel:assign validate="no" name="ServiceType">
+            <bpel:copy>
+                <bpel:from>
+                    <![CDATA[$clientRequest.parameters/serviceLocation]]>
+                </bpel:from>
+                <bpel:to variable="serviceType"></bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:if name="onsite-garage">
+            <bpel:condition><![CDATA[$serviceType="onsite"]]></bpel:condition>
+            <bpel:sequence>
+                <bpel:assign validate="no" name="PrepareAnalyseOnSite">
+                    <bpel:copy>
+                        <bpel:from>
+                            <![CDATA[bpel:doXslTransform("analyseRepairOnSiteOrderReq.xsl", $clientRequest.parameters)]]>
+                        </bpel:from>
+                        <bpel:to part="parameters" variable="analyseRepairOnSiteRequest"></bpel:to>
+                    </bpel:copy>
+                </bpel:assign>
+                <bpel:invoke name="AnalyseOnSite" partnerLink="supportCentre" operation="analyseRepairOnSiteOrder"
+                             portType="ns:RoadsideCustomerSupportCentrePortType"
+                             inputVariable="analyseRepairOnSiteRequest"
+                             outputVariable="analyseRepairOnSiteResponse"></bpel:invoke>
+                <bpel:assign validate="no" name="CreateCommonResponse">
+                    <bpel:copy>
+                        <bpel:from>
+                            <![CDATA[bpel:doXslTransform("createAnalyseOnGarageResponse.xsl", $analyseRepairOnSiteResponse.parameters)]]>
+                        </bpel:from>
+                        <bpel:to part="parameters" variable="analyseOnGarageResponse"></bpel:to>
+                    </bpel:copy>
+                </bpel:assign>
+            </bpel:sequence>
+
+        </bpel:if>
+        <bpel:sequence name="CustomerService">
+            <bpel:flow name="RoasideAssistances">
+                <bpel:sequence name="TowingAnDRepair">
+                    <bpel:if name="onsite-garage2">
+                        <bpel:condition><![CDATA[$serviceType="onsite"]]></bpel:condition>
+                        <bpel:sequence>
+                            <bpel:assign validate="no" name="OrderRepairOnSiteRequest">
+                                <bpel:copy>
+                                    <bpel:from>
+                                        <![CDATA[ bpel:doXslTransform("repairOnSiteReq.xsl", $analyseRepairOnSiteResponse.parameters)]]>
+                                    </bpel:from>
+                                    <bpel:to part="parameters" variable="repairOnSiteRequest"></bpel:to>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:invoke name="OrderOnSiteRepair" partnerLink="garageChain" operation="repairOnSite"
+                                         portType="ns0:RoadsideGarageChainPortType" inputVariable="repairOnSiteRequest"
+                                         outputVariable="repairOnSiteResponse"></bpel:invoke>
+                            <bpel:assign validate="no" name="CreateRepairBillOnSite">
+                                <bpel:copy>
+                                    <bpel:from>
+                                        <![CDATA[bpel:doXslTransform("billRepairReq.xsl", $repairOnSiteResponse.parameters)]]>
+                                    </bpel:from>
+                                    <bpel:to part="parameters" variable="billRepairRequest"></bpel:to>
+                                </bpel:copy>
+                            </bpel:assign>
+                        </bpel:sequence>
+
+                    </bpel:if>
+                    <bpel:flow name="TowingAndRepairBillandPayment">
+                        <bpel:sequence name="BillingAndPayingRepair">
+                            <bpel:invoke name="BillRepair" partnerLink="accoutingfirm"
+                                         operation="billRepair" portType="ns7:RoadsideAccountingFirmPortType"
+                                         inputVariable="billRepairRequest" outputVariable="billRepairResponse"/>
+                            <bpel:assign validate="no" name="PayRepairRequest">
+                                <bpel:copy>
+                                    <bpel:from>
+                                        <![CDATA[bpel:doXslTransform("payRepairReq.xsl", $billRepairResponse.parameters)]]>
+                                    </bpel:from>
+                                    <bpel:to part="parameters" variable="payRepairRequest"></bpel:to>
+                                </bpel:copy>
+                            </bpel:assign>
+                            <bpel:invoke name="PayRepair" partnerLink="paymentService"
+                                         operation="payRepair" portType="ns8:RoadsidePaymentServicePortType"
+                                         inputVariable="payRepairRequest" outputVariable="payReapairResponse"/>
+                        </bpel:sequence>
+                    </bpel:flow>
+                </bpel:sequence>
+
+
+                <bpel:sequence name="LegalAdvice">
+                    <bpel:assign validate="no" name="LegalAdviceRequest">
+                        <bpel:copy>
+                            <bpel:from>
+                                <![CDATA[bpel:doXslTransform("provideLegalAdviceReq.xsl", $analyseOnGarageResponse.parameters)]]>
+                            </bpel:from>
+                            <bpel:to part="parameters" variable="legalAdviceRequest"></bpel:to>
+                        </bpel:copy>
+                    </bpel:assign>
+                    <bpel:invoke name="LegalAdvice" partnerLink="lawAgency" operation="provideLegalAdvice"
+                                 portType="ns13:RoadsideLawFirmPortType" inputVariable="legalAdviceRequest"
+                                 outputVariable="legalAdviceResponse"></bpel:invoke>
+                    <bpel:assign validate="no" name="BillLegalAdviceRequest">
+                        <bpel:copy>
+                            <bpel:from>
+
+                                <![CDATA[bpel:doXslTransform("billLegalAdviceReq.xsl", $legalAdviceResponse.parameters)]]>
+                            </bpel:from>
+                            <bpel:to part="parameters" variable="billLegalAdviceRequest"></bpel:to>
+                        </bpel:copy>
+                    </bpel:assign>
+                    <bpel:invoke name="BillLegalAdvice" partnerLink="accoutingfirm" operation="billLegalAdvice"
+                                 portType="ns7:RoadsideAccountingFirmPortType" inputVariable="billLegalAdviceRequest"
+                                 outputVariable="billLegalAdviceResponse"></bpel:invoke>
+                    <bpel:assign validate="no" name="PayLegalAdviceRequest">
+                        <bpel:copy>
+                            <bpel:from>
+                                <![CDATA[bpel:doXslTransform("payLegalAdviceReq.xsl", $billLegalAdviceResponse.parameters)]]>
+                            </bpel:from>
+                            <bpel:to part="parameters" variable="payLegalAdviceRequest"></bpel:to>
+                        </bpel:copy>
+                    </bpel:assign>
+                    <bpel:invoke name="PayLegalAdvice" partnerLink="paymentService" operation="payLegalAdvice"
+                                 portType="ns8:RoadsidePaymentServicePortType" inputVariable="payLegalAdviceRequest"
+                                 outputVariable="payLegalAdviceResponse"></bpel:invoke>
+                </bpel:sequence>
+
+            </bpel:flow>
+        </bpel:sequence>
+        <bpel:assign validate="no" name="ClientResponse">
+            <bpel:copy>
+                <bpel:from>
+
+                    <![CDATA[bpel:doXslTransform("analyseRepairOnGarageOrderRes.xsl", $payLegalAdviceRequest.parameters)]]>
+                </bpel:from>
+                <bpel:to part="parameters" variable="clientResponse"></bpel:to>
+            </bpel:copy>
+
+        </bpel:assign>
+        <bpel:reply name="replyOutput" partnerLink="client"
+                    operation="submitRepairOnGarageOrder" portType="tns:RoadsideProcessPortType"
+                    variable="clientResponse"/>
+
+    </bpel:sequence>
+</bpel:process>

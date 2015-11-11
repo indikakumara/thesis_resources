@@ -1,0 +1,1 @@
+RoadsideWithTenants.xml contains SPL infrastructure and Tenants in a single description - Single instance multi-tenancy model

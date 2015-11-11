@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns="http://ws.apache.org/axis2/xsd/towchain"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/towchain"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://ws.apache.org/axis2/towchain">
+    <wsdl:documentation>RoadsideTowChain</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://ws.apache.org/axis2/xsd/towchain">
+            <xs:element name="tow">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vehicleType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contactNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="towResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="towRequest">
+        <wsdl:part name="parameters" element="ns:tow"/>
+    </wsdl:message>
+    <wsdl:message name="towResponse">
+        <wsdl:part name="parameters" element="ns:towResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideTowChainPortType">
+        <wsdl:operation name="tow">
+            <wsdl:input message="tns:towRequest" wsaw:Action="urn:tow"/>
+            <wsdl:output message="tns:towResponse" wsaw:Action="urn:towResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideTowChainSoap11Binding" type="tns:RoadsideTowChainPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="tow">
+            <soap:operation soapAction="urn:tow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideTowChainSoap12Binding" type="tns:RoadsideTowChainPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="tow">
+            <soap12:operation soapAction="urn:tow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideTowChainHttpBinding" type="tns:RoadsideTowChainPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="tow">
+            <http:operation location="tow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideTowChain">
+        <wsdl:port name="RoadsideTowChainHttpSoap11Endpoint" binding="tns:RoadsideTowChainSoap11Binding">
+            <soap:address
+                    location="http://localhost:8082/axis2/services/RoadsideTowChain.RoadsideTowChainHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideTowChainHttpSoap12Endpoint" binding="tns:RoadsideTowChainSoap12Binding">
+            <soap12:address
+                    location="http://localhost:8082/axis2/services/RoadsideTowChain.RoadsideTowChainHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideTowChainHttpEndpoint" binding="tns:RoadsideTowChainHttpBinding">
+            <http:address
+                    location="http://localhost:8082/axis2/services/RoadsideTowChain.RoadsideTowChainHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

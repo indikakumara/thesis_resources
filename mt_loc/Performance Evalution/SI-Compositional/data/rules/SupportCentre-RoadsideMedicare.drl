@@ -1,0 +1,16 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "MedicalTreatment response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "provideMedicalTreatment", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eMedicalTreatmentSuccess");
+end
+
+rule "MedicalTreatment request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "provideMedicalTreatment", response ==false)
+    then
+        $msg.setBlocked(false);
+		$msg.triggerEvent("eMedicalTreatmentReqd");
+end

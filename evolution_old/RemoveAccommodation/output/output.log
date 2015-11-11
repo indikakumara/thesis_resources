@@ -1,0 +1,29 @@
+
+2013-03-12 17:37:36,671 239 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a script to execute
+sss
+2013-03-12 17:37:36,781 73 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:37:36,781 75 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorAddAction@1bd06bf
+2013-03-12 17:37:36,781 15 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - BehaviorUnit dumy has been added
+2013-03-12 17:37:36,781 15 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.
+2013-03-12 17:37:36,781 15 [http-apr-8080-exec-9] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Script applied in .103799505nanoseconds
+2013-03-12 17:37:47,640 239 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a script to execute
+sss
+2013-03-12 17:37:47,656 73 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRoleRemoveAction@163c5bb
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemovePlayerBindingAction@14a8f44
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorRemoveAction@16535bf
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@1ab9dac
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@1fcb845
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefUpdateProcessDef@a5f99b
+2013-03-12 17:37:47,656 75 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemoveBehaviorRefFromProcessDef@a63599
+2013-03-12 17:37:47,656 1217 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: remove, roleId: RoadsideResidence
+2013-03-12 17:37:47,656 861 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.Composite  - Contract with the id 'SupportCentre-RoadsideResidence' has been removed from the composite
+2013-03-12 17:37:47,656 780 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.Composite  - Role with id 'RoadsideResidence' has been removed from this composite.
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - RoleRoadsideResidence has been sucessfully removed
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - New PlayerBinding RoadsideResidence removed successfully
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  -  Behavior removed AccommodationProviding
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : AnalyseAssistRequest of the role :SupportCentre
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : AckRepairing of the role :SupportCentre
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Update property CoT of ProcessDefinitionTenant2 is done
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour Ref AccommodationProvidingof ProcessDefinition Tenant2 has been removed
+2013-03-12 17:37:47,656 15 [http-apr-8080-exec-1] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

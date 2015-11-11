@@ -1,0 +1,16 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "bill tow response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "billTow", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBilledTow");
+end
+
+rule "bill tow request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "billTow", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBillTowReqd");
+end

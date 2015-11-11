@@ -1,0 +1,29 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "Repair response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "repairOnGarage", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRepairOnGarageAccepted");
+end
+rule "Repair request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "repairOnGarage", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRepairOnGarageReqd");
+end
+rule "RepairOnSite response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "repairOnSite", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRepairOnSiteSuccess");
+end
+rule "RepairOnSite request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "repairOnSite", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRepairOnSiteReqd");
+end

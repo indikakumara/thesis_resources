@@ -1,0 +1,17 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+import au.edu.swin.ict.road.composite.contract.Contract;
+import au.edu.swin.ict.road.composite.message.MessageClassifier;
+
+/****** Events / facts ******/
+declare MessageRecievedEvent
+	@role(event)
+end
+
+rule "Classifier based Role"
+salience 100
+no-loop
+    when
+		$classifier : MessageClassifier();
+    then
+    	System.out.println("Routing executed");
+end

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/garagechain" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax25="http://ws.apache.org/axis2/xsd" xmlns:tns="http://ws.apache.org/axis2/garagechain" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/garagechain">
+    <wsdl:documentation>RoadsideGarageChain</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="RepairResponseForOnGarage">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax26="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/garagechain">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="repairOnSite">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vehicleType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contactNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="repairOnSiteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="repairOnGarage">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vehicleType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contactNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="repairOnGarageResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax25:RepairResponseForOnGarage"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="repairOnSiteRequest">
+        <wsdl:part name="parameters" element="ns:repairOnSite"/>
+    </wsdl:message>
+    <wsdl:message name="repairOnSiteResponse">
+        <wsdl:part name="parameters" element="ns:repairOnSiteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="repairOnGarageRequest">
+        <wsdl:part name="parameters" element="ns:repairOnGarage"/>
+    </wsdl:message>
+    <wsdl:message name="repairOnGarageResponse">
+        <wsdl:part name="parameters" element="ns:repairOnGarageResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideGarageChainPortType">
+        <wsdl:operation name="repairOnSite">
+            <wsdl:input message="tns:repairOnSiteRequest" wsaw:Action="urn:repairOnSite"/>
+            <wsdl:output message="tns:repairOnSiteResponse" wsaw:Action="urn:repairOnSiteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="repairOnGarage">
+            <wsdl:input message="tns:repairOnGarageRequest" wsaw:Action="urn:repairOnGarage"/>
+            <wsdl:output message="tns:repairOnGarageResponse" wsaw:Action="urn:repairOnGarageResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideGarageChainSoap11Binding" type="tns:RoadsideGarageChainPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="repairOnSite">
+            <soap:operation soapAction="urn:repairOnSite" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="repairOnGarage">
+            <soap:operation soapAction="urn:repairOnGarage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideGarageChainSoap12Binding" type="tns:RoadsideGarageChainPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="repairOnSite">
+            <soap12:operation soapAction="urn:repairOnSite" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="repairOnGarage">
+            <soap12:operation soapAction="urn:repairOnGarage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideGarageChainHttpBinding" type="tns:RoadsideGarageChainPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="repairOnSite">
+            <http:operation location="repairOnSite"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="repairOnGarage">
+            <http:operation location="repairOnGarage"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideGarageChain">
+        <wsdl:port name="RoadsideGarageChainHttpSoap11Endpoint" binding="tns:RoadsideGarageChainSoap11Binding">
+            <soap:address location="http://172.16.33.134:8082/axis2/services/RoadsideGarageChain.RoadsideGarageChainHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideGarageChainHttpSoap12Endpoint" binding="tns:RoadsideGarageChainSoap12Binding">
+            <soap12:address location="http://172.16.33.134:8082/axis2/services/RoadsideGarageChain.RoadsideGarageChainHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideGarageChainHttpEndpoint" binding="tns:RoadsideGarageChainHttpBinding">
+            <http:address location="http://172.16.33.134:8082/axis2/services/RoadsideGarageChain.RoadsideGarageChainHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns="http://ws.apache.org/axis2/xsd/paymentservice"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:tns="http://ws.apache.org/axis2/paymentservice"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://ws.apache.org/axis2/paymentservice">
+    <wsdl:documentation>RoadsidePaymentService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://ws.apache.org/axis2/xsd/paymentservice">
+            <xs:element name="payTow">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payTowResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRepair">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRepairResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRentRoom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRentRoomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRentCar">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRentCarResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payMedicalTreatment">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payMedicalTreatmentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payLegalAdvice">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="payer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="paymentMethod" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payLegalAdviceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="payRentCarRequest">
+        <wsdl:part name="parameters" element="ns:payRentCar"/>
+    </wsdl:message>
+    <wsdl:message name="payRentCarResponse">
+        <wsdl:part name="parameters" element="ns:payRentCarResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payLegalAdviceRequest">
+        <wsdl:part name="parameters" element="ns:payLegalAdvice"/>
+    </wsdl:message>
+    <wsdl:message name="payLegalAdviceResponse">
+        <wsdl:part name="parameters" element="ns:payLegalAdviceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payMedicalTreatmentRequest">
+        <wsdl:part name="parameters" element="ns:payMedicalTreatment"/>
+    </wsdl:message>
+    <wsdl:message name="payMedicalTreatmentResponse">
+        <wsdl:part name="parameters" element="ns:payMedicalTreatmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payTowRequest">
+        <wsdl:part name="parameters" element="ns:payTow"/>
+    </wsdl:message>
+    <wsdl:message name="payTowResponse">
+        <wsdl:part name="parameters" element="ns:payTowResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payRepairRequest">
+        <wsdl:part name="parameters" element="ns:payRepair"/>
+    </wsdl:message>
+    <wsdl:message name="payRepairResponse">
+        <wsdl:part name="parameters" element="ns:payRepairResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payRentRoomRequest">
+        <wsdl:part name="parameters" element="ns:payRentRoom"/>
+    </wsdl:message>
+    <wsdl:message name="payRentRoomResponse">
+        <wsdl:part name="parameters" element="ns:payRentRoomResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsidePaymentServicePortType">
+        <wsdl:operation name="payRentCar">
+            <wsdl:input message="tns:payRentCarRequest" wsaw:Action="urn:payRentCar"/>
+            <wsdl:output message="tns:payRentCarResponse" wsaw:Action="urn:payRentCarResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payLegalAdvice">
+            <wsdl:input message="tns:payLegalAdviceRequest" wsaw:Action="urn:payLegalAdvice"/>
+            <wsdl:output message="tns:payLegalAdviceResponse" wsaw:Action="urn:payLegalAdviceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payMedicalTreatment">
+            <wsdl:input message="tns:payMedicalTreatmentRequest" wsaw:Action="urn:payMedicalTreatment"/>
+            <wsdl:output message="tns:payMedicalTreatmentResponse" wsaw:Action="urn:payMedicalTreatmentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <wsdl:input message="tns:payTowRequest" wsaw:Action="urn:payTow"/>
+            <wsdl:output message="tns:payTowResponse" wsaw:Action="urn:payTowResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <wsdl:input message="tns:payRepairRequest" wsaw:Action="urn:payRepair"/>
+            <wsdl:output message="tns:payRepairResponse" wsaw:Action="urn:payRepairResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payRentRoom">
+            <wsdl:input message="tns:payRentRoomRequest" wsaw:Action="urn:payRentRoom"/>
+            <wsdl:output message="tns:payRentRoomResponse" wsaw:Action="urn:payRentRoomResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsidePaymentServiceSoap11Binding" type="tns:RoadsidePaymentServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="payRentCar">
+            <soap:operation soapAction="urn:payRentCar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <soap:operation soapAction="urn:payTow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payMedicalTreatment">
+            <soap:operation soapAction="urn:payMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payLegalAdvice">
+            <soap:operation soapAction="urn:payLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <soap:operation soapAction="urn:payRepair" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRentRoom">
+            <soap:operation soapAction="urn:payRentRoom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsidePaymentServiceSoap12Binding" type="tns:RoadsidePaymentServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="payRentCar">
+            <soap12:operation soapAction="urn:payRentCar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <soap12:operation soapAction="urn:payTow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payMedicalTreatment">
+            <soap12:operation soapAction="urn:payMedicalTreatment" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payLegalAdvice">
+            <soap12:operation soapAction="urn:payLegalAdvice" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <soap12:operation soapAction="urn:payRepair" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRentRoom">
+            <soap12:operation soapAction="urn:payRentRoom" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsidePaymentServiceHttpBinding" type="tns:RoadsidePaymentServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="payRentCar">
+            <http:operation location="payRentCar"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <http:operation location="payTow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payMedicalTreatment">
+            <http:operation location="payMedicalTreatment"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payLegalAdvice">
+            <http:operation location="payLegalAdvice"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <http:operation location="payRepair"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRentRoom">
+            <http:operation location="payRentRoom"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsidePaymentService">
+        <wsdl:port name="RoadsidePaymentServiceHttpSoap11Endpoint" binding="tns:RoadsidePaymentServiceSoap11Binding">
+            <soap:address
+                    location="http://localhost:8082/axis2/services/RoadsidePaymentService.RoadsidePaymentServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsidePaymentServiceHttpSoap12Endpoint" binding="tns:RoadsidePaymentServiceSoap12Binding">
+            <soap12:address
+                    location="http://localhost:8082/axis2/services/RoadsidePaymentService.RoadsidePaymentServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsidePaymentServiceHttpEndpoint" binding="tns:RoadsidePaymentServiceHttpBinding">
+            <http:address
+                    location="http://localhost:8082/axis2/services/RoadsidePaymentService.RoadsidePaymentServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

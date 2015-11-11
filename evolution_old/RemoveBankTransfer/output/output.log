@@ -1,0 +1,28 @@
+
+2013-03-12 17:40:13,359 73 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRoleRemoveAction@b2771
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemovePlayerBindingAction@4a897c
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorRemoveAction@18845af
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@19702b1
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@131ebb3
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@6946d2
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@1a896a4
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemoveBehaviorRefFromProcessDef@13a0067
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemoveBehaviorRefFromProcessDef@f0761a
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@d9d6ae
+2013-03-12 17:40:13,359 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@19d5fe6
+2013-03-12 17:40:13,359 1217 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: remove, roleId: RoadsideBank
+2013-03-12 17:40:13,359 861 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Contract with the id 'AccountingFirm-RoadsideBank' has been removed from the composite
+2013-03-12 17:40:13,359 780 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Role with id 'RoadsideBank' has been removed from this composite.
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - RoleRoadsideBank has been sucessfully removed
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - New PlayerBinding RoadsideBank removed successfully
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  -  Behavior removed PayingByBankTransfer
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : BillRepair of the role :AccountingFirm
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : BillTow of the role :AccountingFirm
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : BillRentVehicle of the role :AccountingFirm
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : BillLegalAdvice of the role :AccountingFirm
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour Ref PayingByBankTransferof ProcessDefinition Tenant1 has been removed
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour Ref PayingByBankTransferof ProcessDefinition Tenant2 has been removed
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  PayingByCreditCard has been added to Process Def Tenant1
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  PayingByCreditCard has been added to Process Def Tenant2
+2013-03-12 17:40:13,359 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

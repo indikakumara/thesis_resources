@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:ns="http://roadside-ode.org"
+                  xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsdl2="http://ws.apache.org/axis2/accountingfirm"
+                  xmlns:wsdl3="http://ws.apache.org/axis2/paymentservice"
+                  xmlns:wsdl4="http://ws.apache.org/axis2/supportcentre"
+                  xmlns:wsdl5="http://ws.apache.org/axis2/garagechain" xmlns:wsdl6="http://ws.apache.org/axis2/towchain"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://roadside-ode.org">
+    <wsdl:documentation>RoadsideProcess</wsdl:documentation>
+    <plnk:partnerLinkType name="clientPLType">
+        <plnk:role name="client" portType="ns:RoadsideProcessPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="accountingPLType">
+        <plnk:role name="billRequester" portType="wsdl2:RoadsideAccountingFirmPortType"/>
+        <plnk:role name="billProvider" portType="wsdl2:RoadsideAccountingFirmPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="paymentServicePLType">
+        <plnk:role name="paymentServiceRole" portType="wsdl3:RoadsidePaymentServicePortType"/>
+        <plnk:role name="paymentServicePlayer" portType="wsdl3:RoadsidePaymentServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="supportCentrePLType">
+        <plnk:role name="supportCentreRole" portType="wsdl4:RoadsideCustomerSupportCentrePortType"/>
+        <plnk:role name="supportCentrePlayer" portType="wsdl4:RoadsideCustomerSupportCentrePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="garageChainPLType">
+        <plnk:role name="garageChainRole" portType="wsdl5:RoadsideGarageChainPortType"/>
+        <plnk:role name="garageChainPlayer" portType="wsdl5:RoadsideGarageChainPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="towChainPLType">
+        <plnk:role name="towChainRole" portType="wsdl6:RoadsideTowChainPortType"/>
+        <plnk:role name="towChainPlayer" portType="wsdl6:RoadsideTowChainPortType"/>
+    </plnk:partnerLinkType>
+    <wsdl:import location="RoadsideAccountingFirm.xml" namespace="http://ws.apache.org/axis2/accountingfirm"/>
+    <wsdl:import location="RoadsidePaymentService.xml" namespace="http://ws.apache.org/axis2/paymentservice"/>
+    <wsdl:import location="RoadsideCustomerSupportCentre.xml" namespace="http://ws.apache.org/axis2/supportcentre"/>
+    <wsdl:import location="RoadsideGarageChain.xml" namespace="http://ws.apache.org/axis2/garagechain"/>
+    <wsdl:import location="RoadsideTowChain.xml" namespace="http://ws.apache.org/axis2/towchain"/>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="unqualified"
+                   targetNamespace="http://roadside-ode.org">
+            <xs:element name="submitRepairOnGarageOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="membershipID" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vehicleType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="repairTypes" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="garagePreference" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="serviceLocation" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="tenantID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="submitRepairOnGarageOrderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="submitRepairOnGarageOrderRequest">
+        <wsdl:part element="ns:submitRepairOnGarageOrder" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="submitRepairOnGarageOrderResponse">
+        <wsdl:part element="ns:submitRepairOnGarageOrderResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideProcessPortType">
+        <wsdl:operation name="submitRepairOnGarageOrder">
+            <wsdl:input message="ns:submitRepairOnGarageOrderRequest" wsaw:Action="urn:submitRepairOnGarageOrder"/>
+            <wsdl:output message="ns:submitRepairOnGarageOrderResponse"
+                         wsaw:Action="urn:submitRepairOnGarageOrderResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideProcessSoap11Binding" type="ns:RoadsideProcessPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submitRepairOnGarageOrder">
+            <soap:operation soapAction="urn:submitRepairOnGarageOrder" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideProcessSoap12Binding" type="ns:RoadsideProcessPortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submitRepairOnGarageOrder">
+            <soap12:operation soapAction="urn:submitRepairOnGarageOrder" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideProcessHttpBinding" type="ns:RoadsideProcessPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="submitRepairOnGarageOrder">
+            <http:operation location="submitRepairOnGarageOrder"/>
+            <wsdl:input>
+                <mime:content part="parameters" type="text/xml"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content part="parameters" type="text/xml"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideProcess_MI_Tenant4">
+        <wsdl:port binding="ns:RoadsideProcessSoap11Binding" name="RoadsideProcessHttpSoap11Endpoint">
+            <soap:address location="http://localhost:8080/ode/processes/RoadsideProcess_MI_Tenant4"/>
+        </wsdl:port>
+        <wsdl:port binding="ns:RoadsideProcessSoap12Binding" name="rRoadsideProcessHttpSoap12Endpoint">
+            <soap12:address location="http://localhost:8080/ode/processes/RoadsideProcess_MI_Tenant4"/>
+        </wsdl:port>
+        <wsdl:port binding="ns:RoadsideProcessHttpBinding" name="RoadsideProcessHttpEndpoint">
+            <http:address location="http://localhost:8080/ode/processes/RoadsideProcess_MI_Tenant4"/>
+        </wsdl:port>
+    </wsdl:service>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   PARTNER LINK TYPE DEFINITION
+       the test partnerLinkType binds the provider and
+       requester portType into an asynchronous conversation.
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+</wsdl:definitions>

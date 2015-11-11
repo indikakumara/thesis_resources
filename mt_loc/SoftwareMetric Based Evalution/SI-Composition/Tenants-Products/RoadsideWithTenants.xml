@@ -1,0 +1,3235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jaxfront version=2.66;time=2011-06-27 17:36:31.846;xui=road1.xui;xsd=smc.xsd?>
+<tns:SMC xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:tns6="http://www.swin.edu.au/ict/road/player"
+         xmlns:tns5="http://www.swin.edu.au/ict/road/monitor"
+         xmlns:tns4="http://www.swin.edu.au/ict/road/term" xsi:schemaLocation="smc smc.xsd"
+         xmlns:tns3="http://www.swin.edu.au/ict/road/contract"
+         xmlns:tns2="http://www.swin.edu.au/ict/road/role"
+         xmlns:tns1="http://www.ict.swin.edu.au/serendip/types"
+         xmlns:tns="http://www.swin.edu.au/ict/road/smc"
+         name="ROADSide10rolesMT" dataDir="sample/10roles/data/" routingRuleFile="routing.drl"
+         compositeRuleFile="composite.drl">
+    <ProcessDefinitions>
+        <tns1:ProcessDefinition id="Tenant1">
+            <tns1:CoS>eTenant1Reqd</tns1:CoS>
+            <tns1:CoT>eRepairPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnSite</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eRepairOnSiteSuccess]>0)->([eRepairOnSiteOrderReqd]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant2">
+            <tns1:CoS>eTenant2Reqd</tns1:CoS>
+            <tns1:CoT>eRepairPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnSite</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eRepairOnSiteSuccess]>0)->([eRepairOnSiteOrderReqd]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant3">
+            <tns1:CoS>eTenant3Reqd</tns1:CoS>
+            <tns1:CoT>eRepairPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnSite</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LegalAdviceProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingLegalAdvice</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingLegalAdvice</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eRepairOnSiteSuccess]>0)->([eRepairOnSiteOrderReqd]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant4">
+            <tns1:CoS>eTenant4Reqd</tns1:CoS>
+            <tns1:CoT>eTowPaymentSuccess * eRepairPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LightVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant5">
+            <tns1:CoS>eTenant5Reqd</tns1:CoS>
+            <tns1:CoT>eTowPaymentSuccess * eRepairPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>HeavyVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant6">
+            <tns1:CoS>eTenant6Reqd</tns1:CoS>
+            <tns1:CoT>eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess * eAccommodationPaymentSuccess
+            </tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LightVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>AccommodationProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingAccommodation</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepairing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingAccommodation</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant7">
+            <tns1:CoS>eTenant7Reqd</tns1:CoS>
+            <tns1:CoT>eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess * eRentCarPaymentSuccess</tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LightVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>TaxiProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LegalAdviceProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTaxi</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingLegalAdvice</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTaxi</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingLegalAdvice</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant8">
+            <tns1:CoS>eTenant8Reqd</tns1:CoS>
+            <tns1:CoT>eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess * eRentCarPaymentSuccess
+            </tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>HeavyVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>TaxiProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTaxi</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTaxi</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant9">
+            <tns1:CoS>eTenant9Reqd</tns1:CoS>
+            <tns1:CoT>eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess * eLegalAdvicePaymentSuccess * eMedicalTreatmentPaymentSuccess
+            </tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>HeavyVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LegalAdviceProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>MedicalTreatmentProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingMedicalTreatment</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingLegalAdvice</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingMedicalTreatment</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingLegalAdvice</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+        <tns1:ProcessDefinition id="Tenant10">
+            <tns1:CoS>eTenant10Reqd</tns1:CoS>
+            <tns1:CoT>eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess * eAccommodationPaymentSuccess * eRentCarPaymentSuccess * eLegalAdvicePaymentSuccess * eMedicalTreatmentPaymentSuccess
+            </tns1:CoT>
+            <tns1:BehaviorTermRefs>
+                <tns1:BehavirTermId>RepairOnGarage</tns1:BehavirTermId>
+                <tns1:BehavirTermId>HeavyVehicleTowing</tns1:BehavirTermId>
+                <tns1:BehavirTermId>LegalAdviceProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>MedicalTreatmentProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>TaxiProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>AccommodationProviding</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingMedicalTreatment</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingLegalAdvice</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingTaxi</tns1:BehavirTermId>
+                <tns1:BehavirTermId>BillingAccommodation</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTow</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingRepair</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingMedicalTreatment</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingLegalAdvice</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingTaxi</tns1:BehavirTermId>
+                <tns1:BehavirTermId>PayingAccommodation</tns1:BehavirTermId>
+            </tns1:BehaviorTermRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eGRLocationKnown] >0)->([eTowReqd] >0);</tns1:Constraint>
+                <tns1:Constraint>([eTowSuccess]>0)->[0,6h]([eGRLocationKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:ProcessDefinition>
+    </ProcessDefinitions>
+    <BehaviorTerms>
+        <tns1:BehaviorTerm id="CustomerService" isAbstract="true">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eAssistReqd] >0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="CustomerServiceForRepairOnSite" extends="CustomerService">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="Member.SubmitRepairOnSiteOrder"
+                              preEP="eAssistStarted * eRepairPaymentSuccess"
+                              postEP=""/>
+                <tns1:TaskRef Id="SupportCentre.AnalyseRepairOnSiteOrder"
+                              preEP="eAssistReqd"
+                              postEP="eRepairOnSiteReq"/>
+            </tns1:TaskRefs>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="CustomerServiceForRepairOnGarage" extends="CustomerService">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="Member.SubmitRepairOnGarageOrder"
+                              preEP="eAssistStarted * eTowPaymentSuccess * eRepairPaymentSuccess"
+                              postEP=""/>
+                <tns1:TaskRef Id="SupportCentre.AnalyseRepairOnGarageOrder"
+                              preEP="eAssistReqd"
+                              postEP="eRepairOnGarageReq * eTowReqd"/>
+            </tns1:TaskRefs>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="Repair" isAbstract="true">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="RepairOnSite" extends="Repair" isAbstract="true">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="GarageChain.OrderRepairOnSite"
+                              preEP="eRepairOnSiteReqd"
+                              postEP="eRepairOnSiteSuccess"/>
+                //notify support centre
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eRepairOnSiteSuccess] >0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="RepairOnGarage" extends="Repair" isAbstract="true">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="GarageChain.OrderRepairOnGarage"
+                              preEP="eRepairOnGarageReqd"
+                              postEP="eRepairOnGarageAccepted * eGRLocationKnown"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([eRepairOnGarageAccepted] >0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="Towing" isAbstract="true">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="TowChain.OrderTow"
+                              preEP="eGRLocationKnown * eTowReqd"
+                              postEP="eTowSuccess"/>
+            </tns1:TaskRefs>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="LightVehicleTowing" extends="Towing">
+            <tns1:TaskRefs></tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([orderTowSuccess]>0)->[0,1d]([GRLocKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="HeavyVehicleTowing" extends="Towing">
+            <tns1:TaskRefs></tns1:TaskRefs>
+            <tns1:Constraints>
+                <tns1:Constraint>([orderTowSuccess]>0)->[0,2d]([GRLocKnown]>0);</tns1:Constraint>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="AccommodationProviding">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="RoadsideResidence.RentRoom"
+                              preEP="eAccommodationReqd"
+                              postEP="eAccommodationSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="TaxiProviding">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="RoadsideTaxiChain.RentCar"
+                              preEP="eRentCarReqd"
+                              postEP="eRentCarSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="MedicalTreatmentProviding">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="RoadsideMedicare.ProvideMedicalTreatment"
+                              preEP="eMedicalTreatmentReqd"
+                              postEP="eMedicalTreatmentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="LegalAdviceProviding">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="RoadsideLawFirm.ProvideLegalAdvice"
+                              preEP="eLegalAdviceReqd"
+                              postEP="eLegalAdviceSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+
+        <tns1:BehaviorTerm id="Billing" isAbstract="true">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingTowing" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillTow"
+                              preEP="eBillTowReqd"
+                              postEP="eBilledTow"/>
+            </tns1:TaskRefs>
+            //notify towing company and notify support centre
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingRepairing" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillRepair"
+                              preEP="eBillRepairReqd"
+                              postEP="eBilledRepair"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingAccommodation" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillAccommodation"
+                              preEP="eBillAccommodationReqd"
+                              postEP="eBilledAccommodation"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingTaxi" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillRentCar"
+                              preEP="eBillRentCarReqd"
+                              postEP="eBilledRentCar"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingMedicalTreatment" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillMedicalTreatment"
+                              preEP="eBillMedicalTreatmentReqd"
+                              postEP="eBilledMedicalTreatment"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="BillingLegalAdvice" extends="Billing">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="AccountingFirm.BillLegalAdvice"
+                              preEP="eBillLegalAdviceReqd"
+                              postEP="eBilledLegalAdvice"/>
+                <tns1:TaskRef Id="SupportCentre.NotifyBilledLegalAdvice"
+                              preEP="eBillLegalAdviceReqd"
+                              postEP="eBilledLegalAdvice"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints>
+            </tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="Paying">
+            <tns1:TaskRefs>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingRepairing" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayRepair"
+                              preEP="ePayRepairReqd"
+                              postEP="eRepairPaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingTowing" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayTow"
+                              preEP="ePayTowReqd"
+                              postEP="eTowPaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingAccommodation" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayAccommodation"
+                              preEP="ePayAccommodationReqd"
+                              postEP="eAccommodationPaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingTaxi" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayRentCar"
+                              preEP="ePayRentCarReqd"
+                              postEP="eRentCarPaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingMedicalTreatment" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayMedicalTreatment"
+                              preEP="ePayMedicalTreatmentReqd"
+                              postEP="eMedicalTreatmentPaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+        <tns1:BehaviorTerm id="PayingLegalAdvice" extends="Paying">
+            <tns1:TaskRefs>
+                <tns1:TaskRef Id="PaymentService.PayLegalAdvice"
+                              preEP="ePayLegalAdviceReqd"
+                              postEP="eLegalAdvicePaymentSuccess"/>
+            </tns1:TaskRefs>
+            <tns1:Constraints></tns1:Constraints>
+        </tns1:BehaviorTerm>
+    </BehaviorTerms>
+    <Roles>
+        <Role id="Tenant1" name="Tenant1">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnSiteOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnSiteOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant1"
+                                     termId="submitRepairOnSiteOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant2" name="Tenant2">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant2"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant3" name="Tenant3">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant3"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant4" name="Tenant4">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant4"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant5" name="Tenant5">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant5"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant6" name="Tenant6">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant6"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant7" name="Tenant7">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant7"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant8" name="Tenant8">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant8"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant9" name="Tenant9">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant9"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Tenant10" name="Tenant10">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="true">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="Member-Tenant10"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="Member" name="Member">
+            <Tasks>
+                <tns1:Task id="SubmitRepairOnSiteOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnSiteOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnSiteOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+                <tns1:Task id="SubmitRepairOnGarageOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push" isResponse="true">
+                        <tns1:Operation name="submitRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:SrcMsgs>
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="true"/>
+                    </tns1:SrcMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is a member</Description>
+        </Role>
+        <Role id="SupportCentre" name="SupportCentre">
+            <Tasks>
+                <tns1:Task id="AnalyseRepairOnSiteOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="analyseRepairOnSiteOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnSite</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="analyseRepairOnSiteOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnSite</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="analyseRepairOnSiteOrderReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnSiteOrder"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="orderRepairOnSite" isResponse="false"
+                                        transformation="orderRepairOnSiteReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-Member"
+                                        transformation="analyseRepairOnSiteOrderRes.xsl"
+                                        termId="submitRepairOnSiteOrder"
+                                        isResponse="true"/>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideLawFirm"
+                                        termId="orderLegalAdvice" isResponse="false"
+                                        transformation="orderLegalAdviceReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="AnalyseRepairOnGarageOrder" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="analyseRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="analyseRepairOnGarageOrder">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>membershipID</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>phoneNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garagePreference</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>AnalyseResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="analyseRepairOnGarageOrderReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-Member"
+                                     termId="submitRepairOnGarageOrder"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="orderRepairOnGarage" isResponse="false"
+                                        transformation="orderRepairOnGarageReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-TowChain"
+                                        termId="orderTow" isResponse="false"
+                                        transformation="orderTowReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideResidence"
+                                        termId="orderAccommodation" isResponse="false"
+                                        transformation="orderAccommodationReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideTaxiChain"
+                                        termId="orderRentCar" isResponse="false"
+                                        transformation="orderRentCarReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideMedicare"
+                                        termId="orderMedicalTreatment" isResponse="false"
+                                        transformation="orderMedicalTreatmentReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideLawFirm"
+                                        termId="orderLegalAdvice" isResponse="false"
+                                        transformation="orderLegalAdviceReq.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-Member"
+                                        transformation="analyseRepairOnGarageOrderRes.xsl"
+                                        termId="submitRepairOnGarageOrder"
+                                        isResponse="true"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role SupportCentre</Description>
+        </Role>
+        <Role id="GarageChain" name="GarageChain">
+            <Tasks>
+                <tns1:Task id="OrderRepairOnSite" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="orderRepairOnSite">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="orderRepairOnSite">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="orderRepairOnSiteReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-GarageChain"
+                                     termId="orderRepairOnSite"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="orderRepairOnSite" isResponse="true"
+                                        transformation="orderRepairOnSiteRes.xsl"/>
+                        <tns1:ResultMsg contractId="GarageChain-AccountingFirm"
+                                        termId="billRepair" isResponse="false"
+                                        transformation="orderBillRepairReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="OrderRepairOnGarage" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="orderRepairOnGarage">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>RepairResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="orderRepairOnGarage">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>vehicleType</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>repairTypes</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>RepairResponseForOnGarage</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="orderRepairOnGarageReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-GarageChain"
+                                     termId="orderRepairOnGarage"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="GarageChain-TowChain"
+                                        termId="sendGRLocation" isResponse="false"
+                                        transformation="sendGRLocation.xsl"/>
+                        <tns1:ResultMsg contractId="SupportCentre-GarageChain"
+                                        termId="orderRepairOnGarage" isResponse="true"
+                                        transformation="orderRepairOnGarageRes.xsl"/>
+                        <tns1:ResultMsg contractId="GarageChain-AccountingFirm"
+                                        termId="billRepair" isResponse="false"
+                                        transformation="orderBillRepairReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role GarageChain</Description>
+        </Role>
+        <Role id="TowChain" name="TowChain">
+            <Tasks>
+                <tns1:Task id="OrderTow" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="orderTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="orderTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>contactNumber</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="towReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-TowChain" termId="orderTow"
+                                     isResponse="false"/>
+                        <tns1:SrcMsg contractId="GarageChain-TowChain" termId="sendGRLocation"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-TowChain"
+                                        termId="orderTow" isResponse="true"
+                                        transformation="orderTowRes.xsl"/>
+                        <tns1:ResultMsg contractId="TowChain-AccountingFirm"
+                                        termId="billTow" isResponse="false"
+                                        transformation="orderBillTowReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role TowChain</Description>
+        </Role>
+        <Role id="RoadsideResidence" name="RoadsideResidence">
+            <Tasks>
+                <tns1:Task id="RentRoom" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="rentRoom">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>numberRooms</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="rentRoom">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>numberRooms</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="rentRoomReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-RoadsideResidence" termId="orderAccommodation"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideResidence"
+                                        termId="orderAccommodation" isResponse="true"
+                                        transformation="rentRoomRes.xsl"/>
+                        <tns1:ResultMsg contractId="RoadsideResidence-AccountingFirm"
+                                        termId="billAccommodation" isResponse="false"
+                                        transformation="orderBillAccommodationReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role RoadsideResidence</Description>
+        </Role>
+        <Role id="RoadsideTaxiChain" name="RoadsideTaxiChain">
+            <Tasks>
+                <tns1:Task id="RentCar" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="rentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="rentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="rentCarReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-RoadsideTaxiChain" termId="orderRentCar"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideTaxiChain"
+                                        termId="orderRentCar" isResponse="true"
+                                        transformation="rentCarRes.xsl"/>
+                        <tns1:ResultMsg contractId="RoadsideTaxiChain-AccountingFirm"
+                                        termId="billRentCar" isResponse="false"
+                                        transformation="orderBillRentCarReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role RoadsideTaxiChain</Description>
+        </Role>
+        <Role id="RoadsideMedicare" name="RoadsideMedicare">
+            <Tasks>
+                <tns1:Task id="ProvideMedicalTreatment" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="provideMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="provideMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="provideMedicalTreatmentReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-RoadsideMedicare" termId="orderMedicalTreatment"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideMedicare"
+                                        termId="orderMedicalTreatment" isResponse="true"
+                                        transformation="provideMedicalTreatmentRes.xsl"/>
+                        <tns1:ResultMsg contractId="RoadsideMedicare-AccountingFirm"
+                                        termId="billMedicalTreatment" isResponse="false"
+                                        transformation="orderBillMedicalTreatmentReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role RoadsideMedicare</Description>
+        </Role>
+        <Role id="RoadsideLawFirm" name="RoadsideLawFirm">
+            <Tasks>
+                <tns1:Task id="ProvideLegalAdvice" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="provideLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>content</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="provideLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>content</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="provideLegalAdviceReq.xsl">
+                        <tns1:SrcMsg contractId="SupportCentre-RoadsideLawFirm" termId="orderLegalAdvice"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="SupportCentre-RoadsideLawFirm"
+                                        termId="orderLegalAdvice" isResponse="true"
+                                        transformation="provideLegalAdviceRes.xsl"/>
+                        <tns1:ResultMsg contractId="RoadsideLawFirm-AccountingFirm"
+                                        termId="billLegalAdvice" isResponse="false"
+                                        transformation="orderBillLegalAdviceReq.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role RoadsideLawFirm</Description>
+        </Role>
+        <Role id="AccountingFirm" name="AccountingFirm">
+            <Tasks>
+                <tns1:Task id="BillRepair" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billRepair">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billRepair">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billRepairReq.xsl">
+                        <tns1:SrcMsg contractId="GarageChain-AccountingFirm" termId="billRepair"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="GarageChain-AccountingFirm"
+                                        termId="billRepair" isResponse="true"
+                                        transformation="billRepairRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderRepairPay" isResponse="false"
+                                        transformation="orderRepairPay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="BillTow" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>garageLocation</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billTowReq.xsl">
+                        <tns1:SrcMsg contractId="TowChain-AccountingFirm" termId="billTow"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="TowChain-AccountingFirm"
+                                        termId="billTow" isResponse="true"
+                                        transformation="billTowRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderTowPay" isResponse="false"
+                                        transformation="orderTowPay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="BillAccommodation" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billAccommodation">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billAccommodation">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billAccommodationReq.xsl">
+                        <tns1:SrcMsg contractId="RoadsideResidence-AccountingFirm" termId="billAccommodation"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="RoadsideResidence-AccountingFirm"
+                                        termId="billAccommodation" isResponse="true"
+                                        transformation="billAccommodationRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderAccommodationPay" isResponse="false"
+                                        transformation="orderAccommodationPay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="BillRentCar" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billRentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billRentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billRentCarReq.xsl">
+                        <tns1:SrcMsg contractId="RoadsideTaxiChain-AccountingFirm" termId="billRentCar"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="RoadsideTaxiChain-AccountingFirm"
+                                        termId="billRentCar" isResponse="true"
+                                        transformation="billRentCarRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderRentCarPay" isResponse="false"
+                                        transformation="orderRentCarPay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="BillMedicalTreatment" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>location</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billMedicalTreatmentReq.xsl">
+                        <tns1:SrcMsg contractId="RoadsideMedicare-AccountingFirm" termId="billMedicalTreatment"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="RoadsideMedicare-AccountingFirm"
+                                        termId="billMedicalTreatment" isResponse="true"
+                                        transformation="billMedicalTreatmentRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderMedicalTreatmentPay" isResponse="false"
+                                        transformation="orderMedicalTreatmentPay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="BillLegalAdvice" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="billLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="billLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>message</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>memberClass</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="billLegalAdviceReq.xsl">
+                        <tns1:SrcMsg contractId="RoadsideLawFirm-AccountingFirm" termId="billLegalAdvice"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="RoadsideLawFirm-AccountingFirm"
+                                        termId="billLegalAdvice" isResponse="true"
+                                        transformation="billLegalAdviceRes.xsl"/>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderLegalAdvicePay" isResponse="false"
+                                        transformation="orderLegalAdvicePay.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role AccountingFirm</Description>
+        </Role>
+        <Role id="PaymentService" name="PaymentService">
+            <Tasks>
+                <tns1:Task id="PayRepair" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payRepair">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payRepair">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payRepairReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderRepairPay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderRepairPay" isResponse="true"
+                                        transformation="payRepairRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="PayTow" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payTow">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payTowReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderTowPay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderTowPay" isResponse="true"
+                                        transformation="payTowRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="PayAccommodation" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payAccommodation">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payAccommodation">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payAccommodationReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderAccommodationPay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderAccommodationPay" isResponse="true"
+                                        transformation="payAccommodationRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="PayRentCar" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payRentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payRentCar">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payRentCarReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderRentCarPay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderRentCarPay" isResponse="true"
+                                        transformation="payRentCarRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="PayMedicalTreatment" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payMedicalTreatment">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payMedicalTreatmentReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderMedicalTreatmentPay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderMedicalTreatmentPay" isResponse="true"
+                                        transformation="payMedicalTreatmentRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+                <tns1:Task id="PayLegalAdvice" isMsgDriven="false">
+                    <tns1:Out deliveryType="push">
+                        <tns1:Operation name="payLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:Out>
+                    <tns1:In isResponse="true">
+                        <tns1:Operation name="payLegalAdvice">
+                            <Parameters>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>amount</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>payer</Name>
+                                </Parameter>
+                                <Parameter>
+                                    <Type>String</Type>
+                                    <Name>paymentMethod</Name>
+                                </Parameter>
+                            </Parameters>
+                            <Return>String</Return>
+                        </tns1:Operation>
+                    </tns1:In>
+                    <tns1:SrcMsgs transformation="payLegalAdviceReq.xsl">
+                        <tns1:SrcMsg contractId="AccountingFirm-PaymentService" termId="orderLegalAdvicePay"
+                                     isResponse="false"/>
+                    </tns1:SrcMsgs>
+                    <tns1:ResultMsgs>
+                        <tns1:ResultMsg contractId="AccountingFirm-PaymentService"
+                                        termId="orderLegalAdvicePay" isResponse="true"
+                                        transformation="payLegalAdviceRes.xsl"/>
+                    </tns1:ResultMsgs>
+                </tns1:Task>
+            </Tasks>
+            <Description>This is role PaymentService</Description>
+        </Role>
+    </Roles>
+    <Contracts>
+        <Contract id="SupportCentre-GarageChain" type="permissive"
+                  ruleFile="SupportCentre-GarageChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderRepairOnSite" name="orderRepairOnSite-term">
+                    <Operation name="orderRepairOnSite">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>contactNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for orderRepairOnSite</Description>
+                </Term>
+                <Term id="orderRepairOnGarage" name="orderRepairOnGarage-term">
+                    <Operation name="orderRepairOnGarage">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>contactNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>RepairResponseForOnGarage</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for orderRepairOnGarage</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>GarageChain</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and GarageChain
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-TowChain" type="permissive"
+                  ruleFile="SupportCentre-TowChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderTow" name="orderTow-term">
+                    <Operation name="orderTow">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>contactNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for towBus</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>TowChain</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and TowChain
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-RoadsideResidence" type="permissive"
+                  ruleFile="SupportCentre-RoadsideResidence.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderAccommodation" name="orderAccommodation-term">
+                    <Operation name="orderAccommodation">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>numberRooms</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for rent room</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>RoadsideResidence</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and RoadsideResidence
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-RoadsideTaxiChain" type="permissive"
+                  ruleFile="SupportCentre-RoadsideTaxiChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderRentCar" name="orderRentCar-term">
+                    <Operation name="orderRentCar">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>numberRooms</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for rent room</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>RoadsideTaxiChain</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and RoadsideTaxiChain
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-RoadsideMedicare" type="permissive"
+                  ruleFile="SupportCentre-RoadsideMedicare.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderMedicalTreatment" name="orderMedicalTreatment-term">
+                    <Operation name="orderMedicalTreatment">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for orderMedicalTreatment</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>RoadsideMedicare</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and RoadsideMedicare
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-RoadsideLawFirm" type="permissive"
+                  ruleFile="SupportCentre-RoadsideLawFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderLegalAdvice" name="LegalAdvice-term">
+                    <Operation name="orderLegalAdvice">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>content</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                    <Description>Term for orderLegal</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>RoadsideLawFirm</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and RoadsideLawFirm
+            </Description>
+        </Contract>
+        <Contract id="GarageChain-TowChain" type="permissive"
+                  ruleFile="GarageChain-TowChain.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="sendGRLocation" name="term to send the garage location">
+                    <Operation name="sendGRLocation">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>addressOfGR</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>GarageChain</RoleAID>
+            <RoleBID>TowChain</RoleBID>
+            <Description>This is the contract btwn the GarageChain and TowChain
+            </Description>
+        </Contract>
+        <Contract id="GarageChain-AccountingFirm" type="permissive"
+                  ruleFile="GarageChain-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billRepair" name="term to billRepair">
+                    <Operation name="billRepair">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garageLocation</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>GarageChain</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and GarageChain
+            </Description>
+        </Contract>
+        <Contract id="TowChain-AccountingFirm" type="permissive"
+                  ruleFile="TowChain-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billTow" name="term to billTow">
+                    <Operation name="billTow">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garageLocation</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>TowChain</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and TowChain
+            </Description>
+        </Contract>
+        <Contract id="RoadsideResidence-AccountingFirm" type="permissive"
+                  ruleFile="RoadsideResidence-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billAccommodation" name="term to billAccommodation">
+                    <Operation name="billAccommodation">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>RoadsideResidence</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and RoadsideResidence
+            </Description>
+        </Contract>
+        <Contract id="RoadsideTaxiChain-AccountingFirm" type="permissive"
+                  ruleFile="RoadsideTaxiChain-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billRentCar" name="term to billRentCar">
+                    <Operation name="billRentCar">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>RoadsideTaxiChain</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and RoadsideTaxiChain
+            </Description>
+        </Contract>
+        <Contract id="RoadsideMedicare-AccountingFirm" type="permissive"
+                  ruleFile="RoadsideMedicare-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billMedicalTreatment" name="term to billMedicalTreatment">
+                    <Operation name="billMedicalTreatment">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>RoadsideMedicare</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and RoadsideMedicare
+            </Description>
+        </Contract>
+        <Contract id="RoadsideLawFirm-AccountingFirm" type="permissive"
+                  ruleFile="RoadsideLawFirm-AccountingFirm.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="billLegalAdvice" name="term to billLegal">
+                    <Operation name="billLegalAdvice">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>memberClass</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>RoadsideLawFirm</RoleAID>
+            <RoleBID>AccountingFirm</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and RoadsideLawFirm
+            </Description>
+        </Contract>
+        <Contract id="AccountingFirm-PaymentService" type="permissive"
+                  ruleFile="AccountingFirm-PaymentService.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="orderTowPay" name="term to make payment">
+                    <Operation name="orderTowPay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+                <Term id="orderRepairPay" name="term to make payment">
+                    <Operation name="orderRepairPay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+                <Term id="orderAccommodationPay" name="term to make payment">
+                    <Operation name="orderAccommodationPay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+                <Term id="orderRentCarPay" name="term to make payment">
+                    <Operation name="orderRentCarPay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+                <Term id="orderMedicalTreatmentPay" name="term to make payment for orderMedicalTreatment">
+                    <Operation name="orderMedicalTreatmentPay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+                <Term id="orderLegalAdvicePay" name="term to make payment for LegalAdvice">
+                    <Operation name="orderLegalAdvicePay">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>amount</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>payer</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>paymentMethod</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>AtoB</Direction>
+                </Term>
+            </Terms>
+            <RoleAID>AccountingFirm</RoleAID>
+            <RoleBID>PaymentService</RoleBID>
+            <Description>This is the contract btwn the AccountingFirm and PaymentService
+            </Description>
+        </Contract>
+        <Contract id="SupportCentre-Member" type="permissive" ruleFile="SupportCentre-Member.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnSiteOrder" name="submitRepairOnSiteOrder-term">
+                    <Operation name="submitRepairOnSiteOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnSiteOrder</Description>
+                </Term>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>SupportCentre</RoleAID>
+            <RoleBID>Member</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Member
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant1" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnSiteOrder" name="submitRepairOnSiteOrder-term">
+                    <Operation name="submitRepairOnSiteOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnSiteOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant1</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant1
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant2" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant2</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant2
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant3" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant3</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant2
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant4" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant4</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant2
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant5" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant5</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant2
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant6" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant6</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant6
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant7" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant7</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant7
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant8" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant8</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant8
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant9" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant9</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant9
+            </Description>
+        </Contract>
+        <Contract id="Member-Tenant10" type="permissive" ruleFile="Member-Tenant.drl">
+            <Abstract>false</Abstract>
+            <State>Incipient</State>
+            <Terms>
+                <Term id="submitRepairOnGarageOrder" name="submitRepairOnGarageOrder-term">
+                    <Operation name="submitRepairOnGarageOrder">
+                        <Parameters>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>membershipID</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>location</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>message</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>vehicleType</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>repairTypes</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>phoneNumber</Name>
+                            </Parameter>
+                            <Parameter>
+                                <Type>String</Type>
+                                <Name>garagePreference</Name>
+                            </Parameter>
+                        </Parameters>
+                        <Return>String</Return>
+                    </Operation>
+                    <Direction>BtoA</Direction>
+                    <Description>Term for submitRepairOnGarageOrder</Description>
+                </Term>
+            </Terms>
+            <RoleAID>Member</RoleAID>
+            <RoleBID>Tenant10</RoleBID>
+            <Description>This is the contract btwn the SupportCentre and Tenant10
+            </Description>
+        </Contract>
+    </Contracts>
+    <PlayerBindings>
+        <PlayerBinding id="SupportCentre">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideCustomerSupportCentre</Endpoint>
+            <Roles>
+                <RoleID>SupportCentre</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="GarageChain">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideGarageChain</Endpoint>
+            <Roles>
+                <RoleID>GarageChain</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="TowChain">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideTowChain</Endpoint>
+            <Roles>
+                <RoleID>TowChain</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="AccountingFirm">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideAccountingFirm</Endpoint>
+            <Roles>
+                <RoleID>AccountingFirm</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="RoadsidePaymentService">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsidePaymentService</Endpoint>
+            <Roles>
+                <RoleID>PaymentService</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="RoadsideTaxiChain">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideTaxiChain</Endpoint>
+            <Roles>
+                <RoleID>RoadsideTaxiChain</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="RoadsideResidence">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideResidence</Endpoint>
+            <Roles>
+                <RoleID>RoadsideResidence</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="RoadsideMedicare">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideMedicare</Endpoint>
+            <Roles>
+                <RoleID>RoadsideMedicare</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+        <PlayerBinding id="RoadsideLawFirm">
+            <Endpoint>http://localhost:8080/axis2/services/RoadsideLawFirm</Endpoint>
+            <Roles>
+                <RoleID>RoadsideLawFirm</RoleID>
+            </Roles>
+            <Description>Description</Description>
+        </PlayerBinding>
+    </PlayerBindings>
+    <OrganiserBinding>OrganiserBinding</OrganiserBinding>
+    <Description>Description</Description>
+</tns:SMC>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/residence" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ws.apache.org/axis2/residence" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/residence">
+    <wsdl:documentation>RoadsideResidence</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/residence">
+            <xs:element name="rentRoom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numberRooms" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="rentRoomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="rentRoomRequest">
+        <wsdl:part name="parameters" element="ns:rentRoom"/>
+    </wsdl:message>
+    <wsdl:message name="rentRoomResponse">
+        <wsdl:part name="parameters" element="ns:rentRoomResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RoadsideResidencePortType">
+        <wsdl:operation name="rentRoom">
+            <wsdl:input message="tns:rentRoomRequest" wsaw:Action="urn:rentRoom"/>
+            <wsdl:output message="tns:rentRoomResponse" wsaw:Action="urn:rentRoomResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RoadsideResidenceSoap11Binding" type="tns:RoadsideResidencePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="rentRoom">
+            <soap:operation soapAction="urn:rentRoom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideResidenceSoap12Binding" type="tns:RoadsideResidencePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="rentRoom">
+            <soap12:operation soapAction="urn:rentRoom" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="RoadsideResidenceHttpBinding" type="tns:RoadsideResidencePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="rentRoom">
+            <http:operation location="rentRoom"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RoadsideResidence">
+        <wsdl:port name="RoadsideResidenceHttpSoap11Endpoint" binding="tns:RoadsideResidenceSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/RoadsideResidence.RoadsideResidenceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideResidenceHttpSoap12Endpoint" binding="tns:RoadsideResidenceSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/RoadsideResidence.RoadsideResidenceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="RoadsideResidenceHttpEndpoint" binding="tns:RoadsideResidenceHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/RoadsideResidence.RoadsideResidenceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,16 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+rule "RentCar response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "rentCar", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eRentCarSuccess");
+end
+
+rule "RentCar request rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "rentCar", response ==false)
+    then
+        $msg.setBlocked(false);
+		$msg.triggerEvent("eRentCarReqd");
+end

@@ -1,0 +1,79 @@
+
+2013-03-12 17:46:50,953 73 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRoleAddAction@1cd1cea
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddPlayerBindingAction@1256a73
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@16fb2f8
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@4eb98b
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@77622b
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@1ce08c7
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@1a2760f
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@f4d6b3
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@3ba002
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@85f3d6
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@4b7c69
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefContractAddAction@1d4f279
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@17af435
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@136e10e
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@1f17a73
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@9e4f7c
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefContractAddAction@17490ad
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@1c68b20
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@1d7e4d6
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefUpdateAction@f0b51d
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorAddAction@102a01f
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@15e7597
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@7a3e72
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@199ae9c
+2013-03-12 17:46:50,953 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@96b1b8
+2013-03-12 17:46:50,953 1196 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewRole, roleId: RoadsideServiceStation
+2013-03-12 17:46:50,953 239 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.SerendipEngine  - RoadsideServiceStation subscribed to the engine
+2013-03-12 17:46:50,953 743 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Adding role with id 'RoadsideServiceStation' to composite RootSMC
+2013-03-12 17:46:50,953 200 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.routing.RoutingTable  - Start loading routing rules sample/FuleDeliveryWithServiceStation/data/\rules\routing.drl for role RoadsideServiceStation
+2013-03-12 17:46:50,968 205 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.routing.RoutingTable  - Finished loading routing rules from disk
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - New role RoadsideServiceStation added successfully
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - New PlayerBinding RoadsideServiceStation added successfully
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : DeliverFuel
+2013-03-12 17:46:50,968 1328 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : DeliverFuel
+2013-03-12 17:46:50,968 1368 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : DeliverFuel
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : BillFuelDelivery
+2013-03-12 17:46:50,968 1328 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : BillFuelDelivery
+2013-03-12 17:46:50,968 1368 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : BillFuelDelivery
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : PayFuelDeliveryByCreditCard
+2013-03-12 17:46:50,968 1328 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : PayFuelDeliveryByCreditCard
+2013-03-12 17:46:50,968 1368 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:46:50,968 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : PayFuelDeliveryByCreditCard
+2013-03-12 17:46:50,968 1234 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewContract, contractId: RoadsideServiceStation-AccountingFirm
+2013-03-12 17:46:50,968 61 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.rules.drools.DroolsContractRulesImpl  - Reading KB from sample/FuleDeliveryWithServiceStation/data/\rules\RoadsideServiceStation-AccountingFirm.drl
+2013-03-12 17:46:51,000 836 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Adding contract RoadsideServiceStation-AccountingFirm to composite RootSMC
+2013-03-12 17:46:51,000 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Contract RoadsideServiceStation-AccountingFirm was successfully added
+2013-03-12 17:46:51,000 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: RoadsideServiceStation-AccountingFirm
+2013-03-12 17:46:51,000 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'billFuelDelivery' has been added to the contract with the id 'RoadsideServiceStation-AccountingFirm'
+2013-03-12 17:46:51,000 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term billFuelDelivery was successfully added
+2013-03-12 17:46:51,000 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:46:51,000 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:46:51,000 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: AccountingFirm-CreditCardCompany
+2013-03-12 17:46:51,000 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'payFuelDeliveryByCreditCard' has been added to the contract with the id 'AccountingFirm-CreditCardCompany'
+2013-03-12 17:46:51,000 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term payFuelDeliveryByCreditCard was successfully added
+2013-03-12 17:46:51,000 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:46:51,000 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:46:51,000 1234 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewContract, contractId: GarageChain-RoadsideServiceStation
+2013-03-12 17:46:51,000 61 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.rules.drools.DroolsContractRulesImpl  - Reading KB from sample/FuleDeliveryWithServiceStation/data/\rules\GarageChain-RoadsideServiceStation.drl
+2013-03-12 17:46:51,015 836 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Adding contract GarageChain-RoadsideServiceStation to composite RootSMC
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Contract GarageChain-RoadsideServiceStation was successfully added
+2013-03-12 17:46:51,015 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: GarageChain-RoadsideServiceStation
+2013-03-12 17:46:51,015 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'deliverFuel' has been added to the contract with the id 'GarageChain-RoadsideServiceStation'
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term deliverFuel was successfully added
+2013-03-12 17:46:51,015 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the task : OrderRepair of the role :GarageChain
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - BehaviorUnit FuelDeliveryFromServiceStation has been added
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  RoadsideServiceStation.DeliverFuel added to FuelDeliveryFromServiceStation
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  AccountingFirm.BillFuelDelivery added to FuelDeliveryFromServiceStation
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  CreditCardCompany.PayFuelDeliveryByCreditCard added to FuelDeliveryFromServiceStation
+2013-03-12 17:46:51,015 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  FuelDeliveryFromServiceStation has been added to Process Def Tenant1
+2013-03-12 17:46:51,046 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

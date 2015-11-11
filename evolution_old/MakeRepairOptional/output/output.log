@@ -1,0 +1,38 @@
+
+2013-03-12 17:30:49,515 73 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskDefAddAction@1879b
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetOutMsgOnTaskAction@6e056e
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefSetInMsgOnTaskAction@126b165
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefContractAddAction@1489c06
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@1fb7cbb
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@1ba1894
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddTermAction@a3bb2e
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddOperationToTermAction@155e508
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorAddAction@2f8c99
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@1b7c63f
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@385715
+2013-03-12 17:30:49,515 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefUpdateProcessDef@dd23cf
+2013-03-12 17:30:49,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Added a Task : TowToGarageOfMember
+2013-03-12 17:30:49,515 1328 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setOutMessageType
+2013-03-12 17:30:49,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the out message : TowToGarageOfMember
+2013-03-12 17:30:49,515 1368 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: setInMessageType
+2013-03-12 17:30:49,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Updated the in message : TowToGarageOfMember
+2013-03-12 17:30:49,515 1234 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewContract, contractId: TowChain-Member
+2013-03-12 17:30:49,515 61 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.rules.drools.DroolsContractRulesImpl  - Reading KB from sample/MakeRepairOptional/data/\rules\TowChain-Member.drl
+2013-03-12 17:30:49,531 836 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Adding contract TowChain-Member to composite RootSMC
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Contract TowChain-Member was successfully added
+2013-03-12 17:30:49,531 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: TowChain-Member
+2013-03-12 17:30:49,531 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'notifyTowCompletion' has been added to the contract with the id 'TowChain-Member'
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term notifyTowCompletion was successfully added
+2013-03-12 17:30:49,531 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:30:49,531 1269 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewTerm, contractId: Member-Tenant3
+2013-03-12 17:30:49,531 890 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - New term with id 'notifyTowCompletion' has been added to the contract with the id 'Member-Tenant3'
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Term notifyTowCompletion was successfully added
+2013-03-12 17:30:49,531 1314 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.Composite  - Organiser: addNewOperation
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Operation successfully added
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - BehaviorUnit TowToGarageOfMember has been added
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  TowChain.TowToGarageOfMember added to TowToGarageOfMember
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  TowToGarageOfMember has been added to Process Def Tenant3
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Update property CoT of ProcessDefinitionTenant3 is done
+2013-03-12 17:30:49,531 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.

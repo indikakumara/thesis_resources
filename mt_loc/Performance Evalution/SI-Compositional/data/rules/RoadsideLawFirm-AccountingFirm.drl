@@ -1,0 +1,17 @@
+import au.edu.swin.ict.road.composite.rules.events.contract.MessageRecievedEvent;
+
+rule "bill LegalAdvice response rule1"
+    when
+		$msg : MessageRecievedEvent(operationName == "billLegalAdvice", response ==true)//, isResponse==false
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBilledLegalAdvice");
+end
+
+rule "bill LegalAdvice request rule2"
+    when
+		$msg : MessageRecievedEvent(operationName == "billLegalAdvice", response ==false)
+    then
+		$msg.setBlocked(false);
+		$msg.triggerEvent("eBillLegalAdviceReqd");
+end

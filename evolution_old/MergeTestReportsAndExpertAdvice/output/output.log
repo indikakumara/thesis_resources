@@ -1,0 +1,18 @@
+
+2013-03-12 17:44:43,609 73 [http-apr-8080-exec-2] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:44:43,609 75 [http-apr-8080-exec-2] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorAddAction@a16b7c
+2013-03-12 17:44:43,703 15 [http-apr-8080-exec-2] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - BehaviorUnit dumy has been added
+2013-03-12 17:44:43,703 15 [http-apr-8080-exec-2] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.
+2013-03-12 17:44:43,703 15 [http-apr-8080-exec-2] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Script applied in .107504166nanoseconds
+2013-03-12 17:44:51,500 239 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a script to execute
+sss
+2013-03-12 17:44:51,500 73 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Got a list of commands for a definition level adaptation
+2013-03-12 17:44:51,500 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefBehaviorRemoveAction@b6e768
+2013-03-12 17:44:51,500 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefTaskRefAddAction@1271ba
+2013-03-12 17:44:51,500 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefRemoveBehaviorRefFromProcessDef@e86a5f
+2013-03-12 17:44:51,500 75 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.serendip.core.mgmt.SerendipOrganizerImpl  - Command found au.edu.swin.ict.serendip.core.mgmt.action.DefAddBehaviorRefToProcessDef@9fa12f
+2013-03-12 17:44:51,500 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  -  Behavior removed ProvidingVehicleInspection
+2013-03-12 17:44:51,500 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Task ref  GarageChain.InspectVehicle added to ProvidingExpertAdvice
+2013-03-12 17:44:51,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour Ref ProvidingVehicleInspectionof ProcessDefinition Tenant3 has been removed
+2013-03-12 17:44:51,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Behaviour  ProvidingExpertAdvice has been added to Process Def Tenant3
+2013-03-12 17:44:51,515 15 [http-apr-8080-exec-4] INFO  au.edu.swin.ict.road.composite.message.OrganiserOperationResult  - Composite Definition Level Adaptation Complete.
