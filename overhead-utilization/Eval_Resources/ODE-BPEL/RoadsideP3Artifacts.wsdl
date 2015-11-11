@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://roadside-ode-paper3/noal"
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+             xmlns:wsdl1="http://ws.apache.org/axis2/co"
+             xmlns:wsdl2="http://ws.apache.org/axis2/grin"
+             xmlns:wsdl3="http://ws.apache.org/axis2/grex"
+             xmlns:wsdl4="http://ws.apache.org/axis2/ps"
+             xmlns:wsdl5="http://ws.apache.org/axis2/ttp"
+             xmlns:wsdl6="http://ws.apache.org/axis2/tts"
+             xmlns:wsdl7="http://ws.apache.org/axis2/vc"
+             xmlns:wsdl8="http://ws.apache.org/axis2/hc"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema" name="RoadsideP3"
+             targetNamespace="http://roadside-ode-paper3/noal">
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         TYPE DEFINITION - List of types participating in this BPEL process
+         The BPEL Designer will generate default request and response types
+         but you can define or import any XML Schema type and use them as part
+         of the message types.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <plnk:partnerLinkType name="scPLType">
+        <plnk:role name="scRole" portType="wsdl1:CaseOfficerServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="grinPLType">
+        <plnk:role name="grinRole" portType="wsdl2:InGarageServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="grexPLType">
+        <plnk:role name="grexRole" portType="wsdl3:ExGarageServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="tcSeqPLType">
+        <plnk:role name="tcSeqRole" portType="wsdl6:TowServiceSeqPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="tcParPLType">
+        <plnk:role name="tcParRole" portType="wsdl5:TowServiceParPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="hcPLType">
+        <plnk:role name="hcPLRole" portType="wsdl8:HotelServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="vcPlayerPLType">
+        <plnk:role name="vcRole" portType="wsdl7:VehicleRentalServicePortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="psPLType">
+        <plnk:role name="psRole" portType="wsdl4:PartSupplierServicePortType"/>
+    </plnk:partnerLinkType>
+    <import location="CaseOfficerService.wsdl" namespace="http://ws.apache.org/axis2/co"/>
+    <import location="ExGarageService.wsdl" namespace="http://ws.apache.org/axis2/grex"/>
+    <import location="HotelService.wsdl" namespace="http://ws.apache.org/axis2/hc"/>
+    <import location="InGarageService.wsdl" namespace="http://ws.apache.org/axis2/grin"/>
+    <import location="PartSupplierService.wsdl" namespace="http://ws.apache.org/axis2/ps"/>
+    <import location="TowServicePar.wsdl" namespace="http://ws.apache.org/axis2/ttp"/>
+    <import location="TowServiceSeq.wsdl" namespace="http://ws.apache.org/axis2/tts"/>
+    <import location="VehicleRentalService.wsdl" namespace="http://ws.apache.org/axis2/vc"/>
+    <types>
+        <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+                   elementFormDefault="qualified" targetNamespace="http://roadside-ode-paper3/noal">
+
+            <xs:element name="RoadsideP3Request">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="memId" type="xs:string"/>
+                        <xs:element minOccurs="0" name="complain" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pickUpLocation" type="xs:string"/>
+                        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="RoadsideP3Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="result" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         MESSAGE TYPE DEFINITION - Definition of the message types used as
+         part of the port type definitions
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <message name="RoadsideP3RequestMessage">
+        <part element="tns:RoadsideP3Request" name="payload"/>
+    </message>
+    <message name="RoadsideP3ResponseMessage">
+        <part element="tns:RoadsideP3Response" name="payload"/>
+    </message>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         PORT TYPE DEFINITION - A port type groups a set of operations into
+         a logical service unit.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!-- portType implemented by the RoadsideP3 BPEL process -->
+    <portType name="RoadsideP3">
+        <operation name="process">
+            <input message="tns:RoadsideP3RequestMessage"/>
+            <output message="tns:RoadsideP3ResponseMessage"/>
+        </operation>
+    </portType>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         PARTNER LINK TYPE DEFINITION
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <plnk:partnerLinkType name="RoadsideP3">
+        <plnk:role name="RoadsideP3Provider" portType="tns:RoadsideP3"/>
+    </plnk:partnerLinkType>
+
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         BINDING DEFINITION - Defines the message format and protocol details
+         for a web service.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="RoadsideP3Binding" type="tns:RoadsideP3">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="process">
+            <soap:operation soapAction="http://roadside-ode-paper3/noal/process"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         SERVICE DEFINITION - A service groups a set of ports into
+         a service unit.
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="RoadsideP3">
+        <port binding="tns:RoadsideP3Binding" name="RoadsideP3Port">
+            <soap:address location="http://localhost:8080/ode/processes/RoadsideP3"/>
+        </port>
+    </service>
+</definitions>

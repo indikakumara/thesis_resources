@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/ttp" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/ttp" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://ws.apache.org/axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/ttp">
+    <wsdl:documentation>TowServicePar</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="TowReturn">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="orderTowResponse" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="sendGRLocationResponse" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFacts">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="fact" nillable="true" type="ax23:PFact"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFact">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="attributes" nillable="true" type="ax23:PFactAttributes"/>
+                    <xs:element minOccurs="0" name="identifier" nillable="true" type="ax23:PFactIdentifier"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="source" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactAttributes">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="attribute" nillable="true" type="ax23:PFactAttribute"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactAttribute">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="attributeKey" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="attributeValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactIdentifier">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="identifierKey" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="identifierValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax24="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/ttp">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="tow">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pickupLocation" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="towResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:TowReturn"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setInsuranceFacts">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="facts" nillable="true" type="ax23:PFacts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="pickUp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pickupLocation" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="pickUpResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payTow">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInsuranceFacts">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInsuranceFactsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:PFacts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deliver">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="garageLocation" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deliverResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="deliverRequest">
+        <wsdl:part name="parameters" element="ns:deliver"/>
+    </wsdl:message>
+    <wsdl:message name="deliverResponse">
+        <wsdl:part name="parameters" element="ns:deliverResponse"/>
+    </wsdl:message>
+    <wsdl:message name="towRequest">
+        <wsdl:part name="parameters" element="ns:tow"/>
+    </wsdl:message>
+    <wsdl:message name="towResponse">
+        <wsdl:part name="parameters" element="ns:towResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setInsuranceFactsRequest">
+        <wsdl:part name="parameters" element="ns:setInsuranceFacts"/>
+    </wsdl:message>
+    <wsdl:message name="setInsuranceFactsResponse"/>
+    <wsdl:message name="payTowRequest">
+        <wsdl:part name="parameters" element="ns:payTow"/>
+    </wsdl:message>
+    <wsdl:message name="payTowResponse"/>
+    <wsdl:message name="getInsuranceFactsRequest">
+        <wsdl:part name="parameters" element="ns:getInsuranceFacts"/>
+    </wsdl:message>
+    <wsdl:message name="getInsuranceFactsResponse">
+        <wsdl:part name="parameters" element="ns:getInsuranceFactsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pickUpRequest">
+        <wsdl:part name="parameters" element="ns:pickUp"/>
+    </wsdl:message>
+    <wsdl:message name="pickUpResponse">
+        <wsdl:part name="parameters" element="ns:pickUpResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TowServiceParPortType">
+        <wsdl:operation name="deliver">
+            <wsdl:input message="tns:deliverRequest" wsaw:Action="urn:deliver"/>
+            <wsdl:output message="tns:deliverResponse" wsaw:Action="urn:deliverResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="tow">
+            <wsdl:input message="tns:towRequest" wsaw:Action="urn:tow"/>
+            <wsdl:output message="tns:towResponse" wsaw:Action="urn:towResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <wsdl:input message="tns:setInsuranceFactsRequest" wsaw:Action="urn:setInsuranceFacts"/>
+            <wsdl:output message="tns:setInsuranceFactsResponse" wsaw:Action="urn:setInsuranceFactsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <wsdl:input message="tns:payTowRequest" wsaw:Action="urn:payTow"/>
+            <wsdl:output message="tns:payTowResponse" wsaw:Action="urn:payTowResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <wsdl:input message="tns:getInsuranceFactsRequest" wsaw:Action="urn:getInsuranceFacts"/>
+            <wsdl:output message="tns:getInsuranceFactsResponse" wsaw:Action="urn:getInsuranceFactsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="pickUp">
+            <wsdl:input message="tns:pickUpRequest" wsaw:Action="urn:pickUp"/>
+            <wsdl:output message="tns:pickUpResponse" wsaw:Action="urn:pickUpResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TowServiceParSoap11Binding" type="tns:TowServiceParPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="deliver">
+            <soap:operation soapAction="urn:deliver" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="tow">
+            <soap:operation soapAction="urn:tow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <soap:operation soapAction="urn:setInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <soap:operation soapAction="urn:payTow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <soap:operation soapAction="urn:getInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pickUp">
+            <soap:operation soapAction="urn:pickUp" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TowServiceParSoap12Binding" type="tns:TowServiceParPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="deliver">
+            <soap12:operation soapAction="urn:deliver" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="tow">
+            <soap12:operation soapAction="urn:tow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <soap12:operation soapAction="urn:setInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <soap12:operation soapAction="urn:payTow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <soap12:operation soapAction="urn:getInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pickUp">
+            <soap12:operation soapAction="urn:pickUp" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TowServiceParHttpBinding" type="tns:TowServiceParPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="deliver">
+            <http:operation location="deliver"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="tow">
+            <http:operation location="tow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <http:operation location="setInsuranceFacts"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payTow">
+            <http:operation location="payTow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <http:operation location="getInsuranceFacts"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pickUp">
+            <http:operation location="pickUp"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TowServicePar">
+        <wsdl:port name="TowServiceParHttpSoap11Endpoint" binding="tns:TowServiceParSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/TowServicePar.TowServiceParHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="TowServiceParHttpSoap12Endpoint" binding="tns:TowServiceParSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/TowServicePar.TowServiceParHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="TowServiceParHttpEndpoint" binding="tns:TowServiceParHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/TowServicePar.TowServiceParHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

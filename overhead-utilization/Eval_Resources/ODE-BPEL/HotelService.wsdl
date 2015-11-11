@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/hc" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/hc" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/hc">
+    <wsdl:documentation>HotelService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/hc">
+            <xs:element name="rentRoom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="rentRoomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endRoomRent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endRoomRentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="endRoomRentRequest">
+        <wsdl:part name="parameters" element="ns:endRoomRent"/>
+    </wsdl:message>
+    <wsdl:message name="endRoomRentResponse">
+        <wsdl:part name="parameters" element="ns:endRoomRentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="rentRoomRequest">
+        <wsdl:part name="parameters" element="ns:rentRoom"/>
+    </wsdl:message>
+    <wsdl:message name="rentRoomResponse">
+        <wsdl:part name="parameters" element="ns:rentRoomResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="HotelServicePortType">
+        <wsdl:operation name="endRoomRent">
+            <wsdl:input message="tns:endRoomRentRequest" wsaw:Action="urn:endRoomRent"/>
+            <wsdl:output message="tns:endRoomRentResponse" wsaw:Action="urn:endRoomRentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="rentRoom">
+            <wsdl:input message="tns:rentRoomRequest" wsaw:Action="urn:rentRoom"/>
+            <wsdl:output message="tns:rentRoomResponse" wsaw:Action="urn:rentRoomResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HotelServiceSoap11Binding" type="tns:HotelServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="rentRoom">
+            <soap:operation soapAction="urn:rentRoom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="endRoomRent">
+            <soap:operation soapAction="urn:endRoomRent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HotelServiceSoap12Binding" type="tns:HotelServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="rentRoom">
+            <soap12:operation soapAction="urn:rentRoom" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="endRoomRent">
+            <soap12:operation soapAction="urn:endRoomRent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HotelServiceHttpBinding" type="tns:HotelServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="rentRoom">
+            <http:operation location="rentRoom"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="endRoomRent">
+            <http:operation location="endRoomRent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HotelService">
+        <wsdl:port name="HotelServiceHttpSoap11Endpoint" binding="tns:HotelServiceSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/HotelService.HotelServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HotelServiceHttpSoap12Endpoint" binding="tns:HotelServiceSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/HotelService.HotelServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HotelServiceHttpEndpoint" binding="tns:HotelServiceHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/HotelService.HotelServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/grex" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/grex" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/grex">
+    <wsdl:documentation>ExGarageService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/grex">
+            <xs:element name="placeRepairOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="placeRepairOrderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payRepair">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGarageLocation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGarageLocationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="doRepair">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="doRepairResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="assessRepair">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="assessRepairResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="doRepairRequest">
+        <wsdl:part name="parameters" element="ns:doRepair"/>
+    </wsdl:message>
+    <wsdl:message name="doRepairResponse">
+        <wsdl:part name="parameters" element="ns:doRepairResponse"/>
+    </wsdl:message>
+    <wsdl:message name="assessRepairRequest">
+        <wsdl:part name="parameters" element="ns:assessRepair"/>
+    </wsdl:message>
+    <wsdl:message name="assessRepairResponse">
+        <wsdl:part name="parameters" element="ns:assessRepairResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payRepairRequest">
+        <wsdl:part name="parameters" element="ns:payRepair"/>
+    </wsdl:message>
+    <wsdl:message name="payRepairResponse"/>
+    <wsdl:message name="getGarageLocationRequest">
+        <wsdl:part name="parameters" element="ns:getGarageLocation"/>
+    </wsdl:message>
+    <wsdl:message name="getGarageLocationResponse">
+        <wsdl:part name="parameters" element="ns:getGarageLocationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="placeRepairOrderRequest">
+        <wsdl:part name="parameters" element="ns:placeRepairOrder"/>
+    </wsdl:message>
+    <wsdl:message name="placeRepairOrderResponse">
+        <wsdl:part name="parameters" element="ns:placeRepairOrderResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ExGarageServicePortType">
+        <wsdl:operation name="doRepair">
+            <wsdl:input message="tns:doRepairRequest" wsaw:Action="urn:doRepair"/>
+            <wsdl:output message="tns:doRepairResponse" wsaw:Action="urn:doRepairResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="assessRepair">
+            <wsdl:input message="tns:assessRepairRequest" wsaw:Action="urn:assessRepair"/>
+            <wsdl:output message="tns:assessRepairResponse" wsaw:Action="urn:assessRepairResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <wsdl:input message="tns:payRepairRequest" wsaw:Action="urn:payRepair"/>
+            <wsdl:output message="tns:payRepairResponse" wsaw:Action="urn:payRepairResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGarageLocation">
+            <wsdl:input message="tns:getGarageLocationRequest" wsaw:Action="urn:getGarageLocation"/>
+            <wsdl:output message="tns:getGarageLocationResponse" wsaw:Action="urn:getGarageLocationResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="placeRepairOrder">
+            <wsdl:input message="tns:placeRepairOrderRequest" wsaw:Action="urn:placeRepairOrder"/>
+            <wsdl:output message="tns:placeRepairOrderResponse" wsaw:Action="urn:placeRepairOrderResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ExGarageServiceSoap11Binding" type="tns:ExGarageServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="doRepair">
+            <soap:operation soapAction="urn:doRepair" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="assessRepair">
+            <soap:operation soapAction="urn:assessRepair" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <soap:operation soapAction="urn:payRepair" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="placeRepairOrder">
+            <soap:operation soapAction="urn:placeRepairOrder" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGarageLocation">
+            <soap:operation soapAction="urn:getGarageLocation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ExGarageServiceSoap12Binding" type="tns:ExGarageServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="doRepair">
+            <soap12:operation soapAction="urn:doRepair" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="assessRepair">
+            <soap12:operation soapAction="urn:assessRepair" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <soap12:operation soapAction="urn:payRepair" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="placeRepairOrder">
+            <soap12:operation soapAction="urn:placeRepairOrder" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGarageLocation">
+            <soap12:operation soapAction="urn:getGarageLocation" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ExGarageServiceHttpBinding" type="tns:ExGarageServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="doRepair">
+            <http:operation location="doRepair"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="assessRepair">
+            <http:operation location="assessRepair"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payRepair">
+            <http:operation location="payRepair"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="placeRepairOrder">
+            <http:operation location="placeRepairOrder"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGarageLocation">
+            <http:operation location="getGarageLocation"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ExGarageService">
+        <wsdl:port name="ExGarageServiceHttpSoap11Endpoint" binding="tns:ExGarageServiceSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/ExGarageService.ExGarageServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ExGarageServiceHttpSoap12Endpoint" binding="tns:ExGarageServiceSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/ExGarageService.ExGarageServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ExGarageServiceHttpEndpoint" binding="tns:ExGarageServiceHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/ExGarageService.ExGarageServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

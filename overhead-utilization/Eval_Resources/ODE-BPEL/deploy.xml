@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:co="http://ws.apache.org/axis2/co" xmlns:grex="http://ws.apache.org/axis2/grex" xmlns:grin="http://ws.apache.org/axis2/grin" xmlns:hc="http://ws.apache.org/axis2/hc" xmlns:noal="http://roadside-ode-paper3/noal" xmlns:ps="http://ws.apache.org/axis2/ps" xmlns:ttp="http://ws.apache.org/axis2/ttp" xmlns:tts="http://ws.apache.org/axis2/tts" xmlns:vc="http://ws.apache.org/axis2/vc">
+  <process name="noal:RoadsideP3">
+    <active>true</active>
+    <retired>false</retired>
+    <in-memory>true</in-memory>
+    <process-events generate="none"/>
+    <provide partnerLink="client">
+      <service name="noal:RoadsideP3" port="RoadsideP3Port"/>
+    </provide>
+    <invoke partnerLink="scPlayer">
+      <service name="co:CaseOfficerService" port="CaseOfficerServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="grinPlayer">
+      <service name="grin:InGarageService" port="InGarageServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="grexPlayer">
+      <service name="grex:ExGarageService" port="ExGarageServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="tcseqPlayer">
+      <service name="tts:TowServiceSeq" port="TowServiceSeqHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="tcparPlayer">
+      <service name="ttp:TowServicePar" port="TowServiceParHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="hcPlayer">
+      <service name="hc:HotelService" port="HotelServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="vcPlayer">
+      <service name="vc:VehicleRentalService" port="VehicleRentalServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="psPlayer">
+      <service name="ps:PartSupplierService" port="PartSupplierServiceHttpSoap11Endpoint"/>
+    </invoke>
+  </process>
+</deploy>

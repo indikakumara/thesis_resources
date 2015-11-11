@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/co" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/co" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://ws.apache.org/axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/co">
+    <wsdl:documentation>CaseOfficerService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="PFacts">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="fact" nillable="true" type="ax21:PFact"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFact">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="attributes" nillable="true" type="ax21:PFactAttributes"/>
+                    <xs:element minOccurs="0" name="identifier" nillable="true" type="ax21:PFactIdentifier"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="source" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactAttributes">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="attribute" nillable="true" type="ax21:PFactAttribute"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactAttribute">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="attributeKey" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="attributeValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PFactIdentifier">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="identifierKey" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="identifierValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AnalyzeReturn">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="orderRepair" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="orderRoom" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="orderTow" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="orderVehicle" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/co">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="setInsuranceFacts">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="facts" nillable="true" type="ax21:PFacts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payVC">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payVCResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payTT">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payTTResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payPS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payPSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payHC">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payHCResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payGR">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="payGRResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInsuranceFacts">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInsuranceFactsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:PFacts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="analyze">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="memId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="complainDetails" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="analyzeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:AnalyzeReturn"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="payTTRequest">
+        <wsdl:part name="parameters" element="ns:payTT"/>
+    </wsdl:message>
+    <wsdl:message name="payTTResponse">
+        <wsdl:part name="parameters" element="ns:payTTResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payVCRequest">
+        <wsdl:part name="parameters" element="ns:payVC"/>
+    </wsdl:message>
+    <wsdl:message name="payVCResponse">
+        <wsdl:part name="parameters" element="ns:payVCResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setInsuranceFactsRequest">
+        <wsdl:part name="parameters" element="ns:setInsuranceFacts"/>
+    </wsdl:message>
+    <wsdl:message name="setInsuranceFactsResponse"/>
+    <wsdl:message name="payHCRequest">
+        <wsdl:part name="parameters" element="ns:payHC"/>
+    </wsdl:message>
+    <wsdl:message name="payHCResponse">
+        <wsdl:part name="parameters" element="ns:payHCResponse"/>
+    </wsdl:message>
+    <wsdl:message name="analyzeRequest">
+        <wsdl:part name="parameters" element="ns:analyze"/>
+    </wsdl:message>
+    <wsdl:message name="analyzeResponse">
+        <wsdl:part name="parameters" element="ns:analyzeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payPSRequest">
+        <wsdl:part name="parameters" element="ns:payPS"/>
+    </wsdl:message>
+    <wsdl:message name="payPSResponse">
+        <wsdl:part name="parameters" element="ns:payPSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="payGRRequest">
+        <wsdl:part name="parameters" element="ns:payGR"/>
+    </wsdl:message>
+    <wsdl:message name="payGRResponse">
+        <wsdl:part name="parameters" element="ns:payGRResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getInsuranceFactsRequest">
+        <wsdl:part name="parameters" element="ns:getInsuranceFacts"/>
+    </wsdl:message>
+    <wsdl:message name="getInsuranceFactsResponse">
+        <wsdl:part name="parameters" element="ns:getInsuranceFactsResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CaseOfficerServicePortType">
+        <wsdl:operation name="payTT">
+            <wsdl:input message="tns:payTTRequest" wsaw:Action="urn:payTT"/>
+            <wsdl:output message="tns:payTTResponse" wsaw:Action="urn:payTTResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payVC">
+            <wsdl:input message="tns:payVCRequest" wsaw:Action="urn:payVC"/>
+            <wsdl:output message="tns:payVCResponse" wsaw:Action="urn:payVCResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <wsdl:input message="tns:setInsuranceFactsRequest" wsaw:Action="urn:setInsuranceFacts"/>
+            <wsdl:output message="tns:setInsuranceFactsResponse" wsaw:Action="urn:setInsuranceFactsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payHC">
+            <wsdl:input message="tns:payHCRequest" wsaw:Action="urn:payHC"/>
+            <wsdl:output message="tns:payHCResponse" wsaw:Action="urn:payHCResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="analyze">
+            <wsdl:input message="tns:analyzeRequest" wsaw:Action="urn:analyze"/>
+            <wsdl:output message="tns:analyzeResponse" wsaw:Action="urn:analyzeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payPS">
+            <wsdl:input message="tns:payPSRequest" wsaw:Action="urn:payPS"/>
+            <wsdl:output message="tns:payPSResponse" wsaw:Action="urn:payPSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="payGR">
+            <wsdl:input message="tns:payGRRequest" wsaw:Action="urn:payGR"/>
+            <wsdl:output message="tns:payGRResponse" wsaw:Action="urn:payGRResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <wsdl:input message="tns:getInsuranceFactsRequest" wsaw:Action="urn:getInsuranceFacts"/>
+            <wsdl:output message="tns:getInsuranceFactsResponse" wsaw:Action="urn:getInsuranceFactsResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CaseOfficerServiceSoap11Binding" type="tns:CaseOfficerServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="payTT">
+            <soap:operation soapAction="urn:payTT" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payVC">
+            <soap:operation soapAction="urn:payVC" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <soap:operation soapAction="urn:setInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payHC">
+            <soap:operation soapAction="urn:payHC" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyze">
+            <soap:operation soapAction="urn:analyze" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payPS">
+            <soap:operation soapAction="urn:payPS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payGR">
+            <soap:operation soapAction="urn:payGR" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <soap:operation soapAction="urn:getInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CaseOfficerServiceSoap12Binding" type="tns:CaseOfficerServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="payTT">
+            <soap12:operation soapAction="urn:payTT" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payVC">
+            <soap12:operation soapAction="urn:payVC" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <soap12:operation soapAction="urn:setInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payHC">
+            <soap12:operation soapAction="urn:payHC" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyze">
+            <soap12:operation soapAction="urn:analyze" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payPS">
+            <soap12:operation soapAction="urn:payPS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payGR">
+            <soap12:operation soapAction="urn:payGR" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <soap12:operation soapAction="urn:getInsuranceFacts" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CaseOfficerServiceHttpBinding" type="tns:CaseOfficerServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="payTT">
+            <http:operation location="payTT"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payVC">
+            <http:operation location="payVC"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setInsuranceFacts">
+            <http:operation location="setInsuranceFacts"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payHC">
+            <http:operation location="payHC"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="analyze">
+            <http:operation location="analyze"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payPS">
+            <http:operation location="payPS"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="payGR">
+            <http:operation location="payGR"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInsuranceFacts">
+            <http:operation location="getInsuranceFacts"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CaseOfficerService">
+        <wsdl:port name="CaseOfficerServiceHttpSoap11Endpoint" binding="tns:CaseOfficerServiceSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/CaseOfficerService.CaseOfficerServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CaseOfficerServiceHttpSoap12Endpoint" binding="tns:CaseOfficerServiceSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/CaseOfficerService.CaseOfficerServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CaseOfficerServiceHttpEndpoint" binding="tns:CaseOfficerServiceHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/CaseOfficerService.CaseOfficerServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

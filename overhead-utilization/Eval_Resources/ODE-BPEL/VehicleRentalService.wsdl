@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2/xsd/vc" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://ws.apache.org/axis2/vc" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2/vc">
+    <wsdl:documentation>VehicleRentalService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd/vc">
+            <xs:element name="rentVehicle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="rentVehicleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endVehicleRent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endVehicleRentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="endVehicleRentRequest">
+        <wsdl:part name="parameters" element="ns:endVehicleRent"/>
+    </wsdl:message>
+    <wsdl:message name="endVehicleRentResponse">
+        <wsdl:part name="parameters" element="ns:endVehicleRentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="rentVehicleRequest">
+        <wsdl:part name="parameters" element="ns:rentVehicle"/>
+    </wsdl:message>
+    <wsdl:message name="rentVehicleResponse">
+        <wsdl:part name="parameters" element="ns:rentVehicleResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="VehicleRentalServicePortType">
+        <wsdl:operation name="endVehicleRent">
+            <wsdl:input message="tns:endVehicleRentRequest" wsaw:Action="urn:endVehicleRent"/>
+            <wsdl:output message="tns:endVehicleRentResponse" wsaw:Action="urn:endVehicleRentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="rentVehicle">
+            <wsdl:input message="tns:rentVehicleRequest" wsaw:Action="urn:rentVehicle"/>
+            <wsdl:output message="tns:rentVehicleResponse" wsaw:Action="urn:rentVehicleResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="VehicleRentalServiceSoap11Binding" type="tns:VehicleRentalServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="endVehicleRent">
+            <soap:operation soapAction="urn:endVehicleRent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="rentVehicle">
+            <soap:operation soapAction="urn:rentVehicle" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="VehicleRentalServiceSoap12Binding" type="tns:VehicleRentalServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="endVehicleRent">
+            <soap12:operation soapAction="urn:endVehicleRent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="rentVehicle">
+            <soap12:operation soapAction="urn:rentVehicle" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="VehicleRentalServiceHttpBinding" type="tns:VehicleRentalServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="endVehicleRent">
+            <http:operation location="endVehicleRent"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="rentVehicle">
+            <http:operation location="rentVehicle"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="VehicleRentalService">
+        <wsdl:port name="VehicleRentalServiceHttpSoap11Endpoint" binding="tns:VehicleRentalServiceSoap11Binding">
+            <soap:address location="http://localhost:8082/axis2/services/VehicleRentalService.VehicleRentalServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="VehicleRentalServiceHttpSoap12Endpoint" binding="tns:VehicleRentalServiceSoap12Binding">
+            <soap12:address location="http://localhost:8082/axis2/services/VehicleRentalService.VehicleRentalServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="VehicleRentalServiceHttpEndpoint" binding="tns:VehicleRentalServiceHttpBinding">
+            <http:address location="http://localhost:8082/axis2/services/VehicleRentalService.VehicleRentalServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
